@@ -34,10 +34,10 @@ const printInfo = [email, phone, linkedUrl].filter(Boolean).join(' • ')
         <WorldMap />
         {city}, {region}
       </span>
-      <footer class="print">
+      <footer class="hidden print:flex text-gray-600 text-xs gap-1 mt-2">
         {printInfo}
       </footer>
-      <footer class="no-print">
+      <footer class="print:hidden flex text-gray-600 text-xs gap-1 mt-2">
         {
           email && (
             <a
@@ -127,14 +127,6 @@ const printInfo = [email, phone, linkedUrl].filter(Boolean).join(' • ')
     gap: 0.25rem;
     font-size: 0.85rem;
     letter-spacing: -0.05rem;
-  }
-
-  footer {
-    color: #555;
-    font-size: 0.65rem;
-    display: flex;
-    gap: 4px;
-    margin-top: 8px;
   }
 
   footer a {

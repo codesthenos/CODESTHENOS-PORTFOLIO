@@ -13,7 +13,7 @@ const { name, label } = basics
 ---
 
 <Layout title={`Portafolio de ${name} - ${label}`}>
-  <main>
+  <main class="p-8 m-auto w-full sm:p-16">
     <Hero />
     <About />
     <Experience />
@@ -22,17 +22,3 @@ const { name, label } = basics
     <Skills />
   </main>
 </Layout>
-
-<style>
-  main {
-    padding: 4rem;
-    margin: auto;
-    width: 100%;
-  }
-
-  @media (width <= 700px) {
-    main {
-      padding: 2rem;
-    }
-  }
-</style>
