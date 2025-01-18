@@ -5,7 +5,7 @@ import { education } from '@cv'
 ---
 
 <Section title="Educación">
-  <ul>
+  <ul class="flex flex-col gap-8">
     {
       education.map(({ institution, startDate, endDate, area }) => {
         const startYear = new Date(startDate).getFullYear()
@@ -16,16 +16,20 @@ import { education } from '@cv'
         return (
           <li>
             <article>
-              <header>
+              <header class="flex justify-between items-start mb-1">
                 <div>
-                  <h3>{institution}</h3>
+                  <h3 class="font-sans font-medium text-gray-950">
+                    {institution}
+                  </h3>
                 </div>
 
-                <time>{years}</time>
+                <time class="text-gray-600 text-base min-w-[102px] cursor-default text-right">
+                  {years}
+                </time>
               </header>
 
               <footer>
-                <p>{area}</p>
+                <p class="text-gray-500 text-base text-pretty">{area}</p>
               </footer>
             </article>
           </li>
@@ -34,35 +38,3 @@ import { education } from '@cv'
     }
   </ul>
 </Section>
-
-<style>
-  ul {
-    display: flex;
-    flex-direction: column;
-    gap: 32px;
-  }
-
-  article h3 {
-    font-weight: 500;
-    color: #111;
-  }
-
-  header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 4px;
-  }
-
-  time {
-    color: #555;
-    font-size: 0.85rem;
-    min-width: 102px;
-  }
-
-  @media (width <= 700px) {
-    time {
-      text-align: right;
-    }
-  }
-</style>

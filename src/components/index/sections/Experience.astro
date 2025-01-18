@@ -5,7 +5,7 @@ import { work } from '@cv'
 ---
 
 <Section title="Experiencia laboral">
-  <ul>
+  <ul class="flex flex-col gap-8">
     {
       work.map(
         ({ name, startDate, endDate, position, summary, highlights, url }) => {
@@ -16,29 +16,42 @@ import { work } from '@cv'
           return (
             <li>
               <article>
-                <header>
+                <header class="flex justify-between items-start mb-1">
                   <div>
-                    <h3>
-                      <a href={url} title={`Ver ${name}`} target="_blank">
+                    <h3 class="font-sans font-medium text-gray-950">
+                      <a
+                        class="text-gray-950 hover:underline"
+                        href={url}
+                        title={`Ver ${name}`}
+                        target="_blank"
+                      >
                         {name}
                       </a>
                     </h3>
-                    <h4>{position}</h4>
+                    <h4 class="font-sans font-normal">{position}</h4>
                   </div>
 
                   <div>
-                    <time datetime={startDate} data-title={startDate}>
+                    <time
+                      datetime={startDate}
+                      data-title={startDate}
+                      class="text-gray-600 text-base min-w-[102px] cursor-default relative"
+                    >
                       {startYear}
                     </time>
                     {' - '}
-                    <time datetime={endDate} data-title={endDate}>
+                    <time
+                      datetime={endDate}
+                      data-title={endDate}
+                      class="text-gray-600 text-base min-w-[102px] cursor-default relative"
+                    >
                       {endYear}
                     </time>
                   </div>
                 </header>
 
                 <footer>
-                  <p>{summary}</p>
+                  <p class="text-gray-500 text-sm text-pretty">{summary}</p>
                 </footer>
               </article>
             </li>
@@ -50,44 +63,6 @@ import { work } from '@cv'
 </Section>
 
 <style>
-  ul {
-    display: flex;
-    flex-direction: column;
-    gap: 32px;
-  }
-
-  article h3 {
-    font-weight: 500;
-    color: #111;
-  }
-
-  article a {
-    color: #111;
-  }
-
-  article a:hover {
-    text-decoration: underline;
-  }
-
-  article h4 {
-    color: #222;
-    font-weight: 400;
-  }
-
-  header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 4px;
-  }
-
-  time {
-    color: #555;
-    font-size: 0.85rem;
-    min-width: 102px;
-    cursor: default;
-  }
-
   [data-title]:hover:after {
     opacity: 1;
     transition: all 0.1s ease-in-out 0.5s;
@@ -118,13 +93,9 @@ import { work } from '@cv'
     border-radius: 6px;
   }
 
-  [data-title] {
-    position: relative;
-  }
-
-  @media (width <= 700px) {
-    time {
-      text-align: right;
+  @media print {
+    [data-title]:after {
+      display: none;
     }
   }
 </style>
