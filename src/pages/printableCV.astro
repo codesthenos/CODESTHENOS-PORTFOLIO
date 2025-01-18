@@ -1,0 +1,27 @@
+---
+import Layout from '@/layouts/Layout.astro'
+
+import About from '@/components/printableCV/sections/About.astro'
+import Education from '@/components/printableCV/sections/Education.astro'
+import Experience from '@/components/printableCV/sections/Experience.astro'
+import Hero from '@/components/printableCV/sections/Hero.astro'
+import Projects from '@/components/printableCV/sections/Projects.astro'
+import Skills from '@/components/printableCV/sections/Skills.astro'
+import Header from '@/components/Header.astro'
+
+import { basics } from '@cv'
+
+const { name, label } = basics
+---
+
+<Layout title={`Portafolio de ${name} - ${label}`}>
+  <Header href="/" text="VOLVER A LA HOME" />
+  <main class="p-8 m-auto w-full sm:p-16">
+    <Hero />
+    <About />
+    <Experience />
+    <Education />
+    <Projects />
+    <Skills />
+  </main>
+</Layout>

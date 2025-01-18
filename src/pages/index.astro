@@ -1,24 +1,14 @@
 ---
 import Layout from '@/layouts/Layout.astro'
-
-import About from '@/components/index/sections/About.astro'
-import Education from '@/components/index/sections/Education.astro'
-import Experience from '@/components/index/sections/Experience.astro'
-import Hero from '@/components/index/sections/Hero.astro'
-import Projects from '@/components/index/sections/Projects.astro'
-import Skills from '@/components/index/sections/Skills.astro'
-
+import Header from '@/components/Header.astro'
 import { basics } from '@cv'
+
 const { name, label } = basics
 ---
 
 <Layout title={`Portafolio de ${name} - ${label}`}>
+  <Header href="printableCV" text="VER CURRICULUM IMPRIMIBLE" />
   <main class="p-8 m-auto w-full sm:p-16">
-    <Hero />
-    <About />
-    <Experience />
-    <Education />
-    <Projects />
-    <Skills />
+    <h1 class="text-center text-4xl font-extrabold">PAGINA DE ENTRADA</h1>
   </main>
 </Layout>
