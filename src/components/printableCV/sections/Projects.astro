@@ -23,14 +23,14 @@ import { projects } from '@cv'
                     >
                       {name}
                     </a>
-                    <span class="hidden print:inline-block text-gray-400 text-xs">
-                      https://www.{name.toLowerCase()}.com/
-                    </span>
                     {isActive && (
                       <span class="text-green-500 animate-pulse print:animate-none">
                         •
                       </span>
                     )}
+                    <span class="hidden print:block text-gray-400 text-xs">
+                      {url}
+                    </span>
                     {github && (
                       <a
                         class="text-gray-950 hover:underline ml-1"
@@ -39,6 +39,9 @@ import { projects } from '@cv'
                         title={`Ver código fuente del proyecto ${name}`}
                       >
                         <GitHub />
+                        <span class="hidden print:inline-block ml-[-4px] text-gray-400 text-xs">
+                          {github}
+                        </span>
                       </a>
                     )}
                   </h3>
