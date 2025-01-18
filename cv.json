@@ -1,34 +1,34 @@
 {
   "basics": {
     "name": "Guillermo Ruiz Arranz",
-    "label": "Full Stack Developer con más de 15 años de experiencia & Creador de Contenido de Programación",
+    "label": "Desarrollador Full Stack con enfoque en aplicaciones web completas y aprendizaje constante.",
     "image": "/me.png",
-    "email": "miduga@gmail.com",
-    "phone": "+34 688888888",
-    "url": "https://midu.dev",
-    "summary": "+15 años de experiencia como Desarrollador Web. Actualmente soy Creador de Contenido y Divulgador sobre Programación. Vivo en Barcelona, España. He trabajado en diferentes entornos: desde acelerar el desarrollo de start-ups hasta liderando equipos de empresas multinacionales.",
+    "email": "codesthenos@gmail.com",
+    "phone": "+34 630186111",
+    "url": "https://localhost:4321/printableCV",
+    "summary": "En formación como desarrollador full stack en KeepCoding, he trabajado en proyectos prácticos que abarcan frontend, backend, bases de datos y despliegue en producción. Busco mi primera oportunidad profesional para aplicar mis conocimientos y seguir creciendo en un entorno colaborativo.",
     "location": {
       "address": "",
-      "postalCode": "08820",
-      "city": "el Prat de Llobregat",
+      "postalCode": "28818",
+      "city": "Anchuelo",
       "countryCode": "ES",
       "region": "España"
     },
     "profiles": [
       {
-        "network": "LinkedIn",
-        "username": "midudev",
-        "url": "https://linkedin.com/in/midudev"
-      },
-      {
-        "network": "X",
-        "username": "midudev",
-        "url": "https://x.com/midudev"
-      },
-      {
         "network": "GitHub",
         "username": "midudev",
         "url": "https://github.com/midudev"
+      },
+      {
+        "network": "Instagram",
+        "username": "chafun69",
+        "url": "https://www.instagram.com/chafun69/"
+      },
+      {
+        "network": "LinkedIn",
+        "username": "codesthenos",
+        "url": "https://www.linkedin.com/in/codesthenos/"
       }
     ]
   },
