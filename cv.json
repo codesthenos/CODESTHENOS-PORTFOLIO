@@ -178,7 +178,7 @@
         "gh-pages"
       ],
       "url": "https://codesthenos.github.io/FIRST-FULLSTACK-PROYECT/",
-      "github": "https://github.com/codesthenos/FIRST-FULLSTACK-PROYECT"
+      "github": "https://github.com/codesthenos/FIRST-FULLSTACK-PROYECT/"
     },
     {
       "name": "API JWT cookie auth",
@@ -192,14 +192,15 @@
         "cookie auth"
       ],
       "url": "https://api-auth-jwt-cookie.onrender.com/",
-      "github": "https://github.com/codesthenos/API-AUTH-JWT-COOKIE"
+      "github": "https://github.com/codesthenos/API-AUTH-JWT-COOKIE/"
     },
     {
-      "name": "Codember",
+      "name": "Ejemplo de portfolio",
       "isActive": true,
-      "description": "Juego interactivo de programación con retos y secretos",
-      "highlights": ["+2000 usuarios activos", "Retos para cualquier lenguaje"],
-      "url": "https://codember.dev"
+      "description": "Ejemplo de portfolio creado con vanilla HTML, CSS sin JS, migrado a React y el codigo del repo esta preparado para crear una SPA usando una libreria que es una copia del miduRouter inspirado en ReactRouter aunque en desarrollo muestra los estaticos y no los componentes de react, boton de cambio de theme incluido con useState",
+      "highlights": ["React", "SPA in dev", "HTML", "CSS"],
+      "url": "https://codesthenos.github.io/practica-2-usando-react/",
+      "github": "https://github.com/codesthenos/practica-2-usando-react/"
     },
     {
       "name": "codi.link",
