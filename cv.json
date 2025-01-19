@@ -203,12 +203,12 @@
       "github": "https://github.com/codesthenos/practica-2-usando-react/"
     },
     {
-      "name": "codi.link",
+      "name": "Juego StackTower",
       "isActive": true,
-      "description": "Playground de código HTML, CSS y JavaScript para compartir",
-      "highlights": ["100k visitas al mes", "Desarrollado por la comunidad"],
-      "url": "https://codi.link",
-      "github": "https://github.com/midudev/codi.link"
+      "description": "Juego basado en el compartido de midudev pero usando React para aprender",
+      "highlights": ["React", "Canvas", "useRef", "useState"],
+      "url": "https://codesthenos.github.io/StackTower-React/",
+      "github": "https://github.com/codesthenos/StackTower-React/"
     },
     {
       "name": "Pruebas Técnicas",
