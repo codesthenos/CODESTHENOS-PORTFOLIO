@@ -167,22 +167,32 @@
   ],
   "projects": [
     {
-      "name": "mars.codes",
+      "name": "Primer proyecto Fullstack",
       "isActive": true,
-      "description": "Historia interactiva con retos de programación para viajar a Marte",
-      "highlights": ["Elige tu propia aventura", "En desarrollo"],
-      "url": "https://mars.codes"
+      "description": "Wallapop de Temu con registro de usuarios y CRUD de anuncios. First request ≃ 1 minute due to render free tier",
+      "highlights": [
+        "API",
+        "Atlas MongoDB",
+        "render",
+        "Vanilla JS APP",
+        "gh-pages"
+      ],
+      "url": "https://codesthenos.github.io/FIRST-FULLSTACK-PROYECT/",
+      "github": "https://github.com/codesthenos/FIRST-FULLSTACK-PROYECT"
     },
     {
-      "name": "AdventJS",
+      "name": "API JWT cookie auth",
       "isActive": true,
-      "description": "Retos de programación en JavaScript para cada día de diciembre hasta Navidad",
+      "description": "API con autenticación JWT, CRUD de usuarios y documentación en la ruta raíz. First request ≃ 1 minute due to render free tier",
       "highlights": [
-        "+1 millón de visitas",
-        "Multidioma",
-        "JavaScript & TypeScript"
+        "API",
+        "Atlas MongoDB",
+        "render",
+        "JWT token",
+        "cookie auth"
       ],
-      "url": "https://adventjs.dev"
+      "url": "https://api-auth-jwt-cookie.onrender.com/",
+      "github": "https://github.com/codesthenos/API-AUTH-JWT-COOKIE"
     },
     {
       "name": "Codember",
