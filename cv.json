@@ -228,10 +228,12 @@
       "github": "https://github.com/codesthenos/KC-WEB17-Backend-Avanzado-NODE-codesthenos"
     },
     {
-      "name": "miduConf",
-      "description": "Conferencia de programación en streaming para la comunidad hispanohablante con charlas top",
-      "highlights": ["+15k tickets repartidos", "+50k espectadores en directo"],
-      "url": "https://miduconf.com"
+      "name": "Dashboard",
+      "isActive": true,
+      "description": "Completado el curso de NextJS de Vercel e incluida la funcionalidad de poder marcar/desmarcar facturas y descargar una o varias a la vez en diferentes formatos",
+      "highlights": ["user@nextmail.com", "123456", "NextJS", "Vercel", "Neon"],
+      "url": "https://vercel-next-learn-codesthenos.vercel.app/",
+      "github": "https://github.com/codesthenos/Vercel-Next-learn-Codesthenos/"
     }
   ]
 }
