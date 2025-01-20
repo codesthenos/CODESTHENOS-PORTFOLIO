@@ -13,7 +13,7 @@ import { basics } from '@cv'
 const { name, label } = basics
 ---
 
-<Layout title={`Portafolio de ${name} - ${label}`}>
+<Layout title={`Portafolio imprimible de ${name} - ${label}`}>
   <main class="p-8 m-auto w-full sm:p-16">
     <Hero />
     <About />
@@ -23,3 +23,11 @@ const { name, label } = basics
     <Skills />
   </main>
 </Layout>
+
+<style>
+  @media print {
+    astro-dev-toolbar {
+      display: none !important;
+    }
+  }
+</style>
