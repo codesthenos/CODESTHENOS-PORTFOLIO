@@ -7,9 +7,12 @@ interface Props {
 const { href, text } = Astro.props
 ---
 
-<header class="print:hidden">
+<header>
   <a
     class="block mx-auto mt-8 border border-gray-200 rounded-lg bg-gray-700 text-gray-200 py-1 px-2.5 w-fit transition-all duration-300 ease-linear hover:cursor-pointer hover:bg-gray-200 hover:text-gray-700 hover:border-gray-700"
-    href={href}>{text}</a
+    href={href}
+    target="_blank"
   >
+    {text}
+  </a>
 </header>

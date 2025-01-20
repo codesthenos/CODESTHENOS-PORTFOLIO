@@ -181,6 +181,39 @@
       "github": "https://github.com/codesthenos/FIRST-FULLSTACK-PROYECT/"
     },
     {
+      "name": "Nodepop",
+      "isActive": true,
+      "description": "Aplicacion de registro de usuario con express session, crud de productos y api con autenticacion de usuarios usando JWT y crud de productos",
+      "highlights": [
+        "SSR",
+        "express",
+        "rabbitMQ",
+        "microservicios",
+        "api",
+        "docs",
+        "i18n",
+        "Atlas MongoDB"
+      ],
+      "url": "https://kc-web17-backend-avanzado-node.onrender.com/",
+      "github": "https://github.com/codesthenos/KC-WEB17-Backend-Avanzado-NODE-codesthenos"
+    },
+    {
+      "name": "Juego StackTower",
+      "isActive": true,
+      "description": "Juego basado en el compartido de midudev pero usando React para aprender",
+      "highlights": ["React", "Canvas", "useRef", "useState"],
+      "url": "https://codesthenos.github.io/StackTower-React/",
+      "github": "https://github.com/codesthenos/StackTower-React/"
+    },
+    {
+      "name": "Dashboard",
+      "isActive": true,
+      "description": "Completado el curso de NextJS de Vercel e incluida la funcionalidad de poder marcar/desmarcar facturas y descargar una o varias a la vez en diferentes formatos",
+      "highlights": ["user@nextmail.com", "123456", "NextJS", "Vercel", "Neon"],
+      "url": "https://vercel-next-learn-codesthenos.vercel.app/",
+      "github": "https://github.com/codesthenos/Vercel-Next-learn-Codesthenos/"
+    },
+    {
       "name": "API JWT cookie auth",
       "isActive": true,
       "description": "API con autenticación JWT, CRUD de usuarios y documentación en la ruta raíz. First request ≃ 1 minute due to render free tier",
@@ -201,39 +234,6 @@
       "highlights": ["React", "SPA in dev", "HTML", "CSS"],
       "url": "https://codesthenos.github.io/practica-2-usando-react/",
       "github": "https://github.com/codesthenos/practica-2-usando-react/"
-    },
-    {
-      "name": "Juego StackTower",
-      "isActive": true,
-      "description": "Juego basado en el compartido de midudev pero usando React para aprender",
-      "highlights": ["React", "Canvas", "useRef", "useState"],
-      "url": "https://codesthenos.github.io/StackTower-React/",
-      "github": "https://github.com/codesthenos/StackTower-React/"
-    },
-    {
-      "name": "Nodepop",
-      "isActive": true,
-      "description": "Aplicacion de registro de usuario con express session, crud de productos y api con autenticacion de usuarios usando JWT y crud de productos",
-      "highlights": [
-        "SSR",
-        "express",
-        "rabbitMQ",
-        "microservicios",
-        "api",
-        "docs",
-        "i18n",
-        "Atlas MongoDB"
-      ],
-      "url": "https://kc-web17-backend-avanzado-node.onrender.com/",
-      "github": "https://github.com/codesthenos/KC-WEB17-Backend-Avanzado-NODE-codesthenos"
-    },
-    {
-      "name": "Dashboard",
-      "isActive": true,
-      "description": "Completado el curso de NextJS de Vercel e incluida la funcionalidad de poder marcar/desmarcar facturas y descargar una o varias a la vez en diferentes formatos",
-      "highlights": ["user@nextmail.com", "123456", "NextJS", "Vercel", "Neon"],
-      "url": "https://vercel-next-learn-codesthenos.vercel.app/",
-      "github": "https://github.com/codesthenos/Vercel-Next-learn-Codesthenos/"
     }
   ]
 }
