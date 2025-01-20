@@ -1,6 +1,8 @@
 ---
 import Layout from '@/layouts/Layout.astro'
-import Header from '@/components/Header.astro'
+
+import Header from '@/components/index/Header.astro'
+
 import { basics } from '@cv'
 
 const { name, label } = basics
@@ -10,5 +12,6 @@ const { name, label } = basics
   <Header href="printableCV" text="VER CURRICULUM IMPRIMIBLE" />
   <main class="p-8 m-auto w-full sm:p-16">
     <h1 class="text-center text-4xl font-extrabold">PAGINA DE ENTRADA</h1>
+    <h2 class="text-center text-2xl font-semibold">TODO</h2>
   </main>
 </Layout>
