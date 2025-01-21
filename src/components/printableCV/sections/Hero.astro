@@ -23,6 +23,7 @@ const linkedInfo = profiles.find(({ network }) => network === 'LinkedIn')
 const linkedUrl = linkedInfo?.url
 
 const printInfo = [email, phone, linkedUrl].filter(Boolean).join(' • ')
+const baserUrl = import.meta.env.BASE_URL
 ---
 
 <Section>
@@ -96,7 +97,7 @@ const printInfo = [email, phone, linkedUrl].filter(Boolean).join(' • ')
       </footer>
     </div>
     <figure class="flex justify-center items-center">
-      <img src={image} alt={name} class="w-36 rounded-2xl" />
+      <img src={`${baserUrl}${image}`} alt={name} class="w-36 rounded-2xl" />
     </figure>
   </div>
 </Section>
