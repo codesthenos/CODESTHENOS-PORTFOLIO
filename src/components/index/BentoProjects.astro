@@ -3,17 +3,17 @@ import { proyects } from '@proyects'
 ---
 
 <section
-  class="md:grid md:grid-cols-3 md:gap-4 md:max-w-3xl md:mx-auto border rounded-lg border-red-600"
+  class="md:grid md:grid-cols-4 md:gap-4 md:max-w-3xl md:mx-auto border rounded-lg border-red-600"
 >
   {
     proyects.map((proyect) => (
       <div
         class={`
-          ${proyect.name === 'Primer proyecto Fullstack' && 'md:row-span-2 md:col-span-2'}
-          ${proyect.name === 'Nodepop' && 'md:row-span-1 md:col-span-1'}
+          ${proyect.name === 'Primer proyecto Fullstack' && 'md:row-span-1 md:col-span-4'}
+          ${proyect.name === 'Nodepop' && 'md:row-span-1 md:col-span-3'}
           ${proyect.name === 'Juego StackTower' && 'md:row-span-1 md:col-span-1'}
+          ${proyect.name === 'Dashboard' && 'md:row-span-1 md:col-span-2'}
           ${proyect.name === 'API JWT cookie auth' && 'md:row-span-1 md:col-span-1'}
-          ${proyect.name === 'Dashboard' && 'md:row-span-1 md:col-span-3'}
           ${proyect.name === 'Ejemplo de portfolio' && 'md:row-span-1 md:col-span-1'}
           flex flex-col items-center justify-center p-4 m-4 bg-red-300 rounded-lg shadow-md`}
       >
