@@ -12,7 +12,7 @@ export default {
     'md:bg-green-300',
     'md:bg-yellow-300',
     'md:bg-violet-300',
-    'md:bg-orange-300',
+    'md:bg-orange-300'
   ],
 	theme: {
 		extend: {},

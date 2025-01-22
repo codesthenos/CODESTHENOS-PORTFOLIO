@@ -32,7 +32,7 @@
       ],
       "url": "https://kc-web17-backend-avanzado-node.onrender.com/",
       "github": "https://github.com/codesthenos/KC-WEB17-Backend-Avanzado-NODE-codesthenos",
-      "image": "",
+      "image": "projects/nodepop.png",
       "tailwindClasses": "md:row-span-1 md:col-span-3 md:bg-blue-300"
     },
     {
@@ -42,7 +42,7 @@
       "highlights": ["React", "Canvas", "useRef", "useState"],
       "url": "https://codesthenos.github.io/StackTower-React/",
       "github": "https://github.com/codesthenos/StackTower-React/",
-      "image": "",
+      "image": "projects/juego-stack-tower.webp",
       "tailwindClasses": "md:row-span-1 md:col-span-1 md:bg-green-300"
     },
     {
@@ -52,7 +52,7 @@
       "highlights": ["user@nextmail.com", "123456", "NextJS", "Vercel", "Neon"],
       "url": "https://vercel-next-learn-codesthenos.vercel.app/",
       "github": "https://github.com/codesthenos/Vercel-Next-learn-Codesthenos/",
-      "image": "",
+      "image": "projects/dashboard.jpg",
       "tailwindClasses": "md:row-span-1 md:col-span-2 md:bg-yellow-300"
     },
     {
@@ -68,7 +68,7 @@
       ],
       "url": "https://api-auth-jwt-cookie.onrender.com/",
       "github": "https://github.com/codesthenos/API-AUTH-JWT-COOKIE/",
-      "image": "",
+      "image": "projects/api-jwt-cookie-auth.png",
       "tailwindClasses": "md:row-span-1 md:col-span-1 md:bg-violet-300"
     },
     {
@@ -78,7 +78,7 @@
       "highlights": ["React", "SPA in dev", "HTML", "CSS"],
       "url": "https://codesthenos.github.io/practica-2-usando-react/",
       "github": "https://github.com/codesthenos/practica-2-usando-react/",
-      "image": "",
+      "image": "projects/ejemplo-de-portfolio.png",
       "tailwindClasses": "md:row-span-1 md:col-span-1 md:bg-orange-300"
     }
   ]

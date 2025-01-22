@@ -3,26 +3,26 @@ import { proyects } from '@proyects'
 ---
 
 <section
-  class="md:grid md:grid-cols-4 md:gap-4 md:max-w-3xl md:mx-auto border rounded-lg border-red-600"
+  class="max-w-xs mx-auto flex flex-col gap-2 md:grid md:grid-cols-4 md:gap-2 md:max-w-3xl md:mx-auto rounded-lg bg-gray-800 p-2"
 >
   {
     proyects.map((proyect) => (
       <div
-        class={`
-          ${proyect.name === 'Primer proyecto Fullstack' && 'md:hover:bg-[url("https://codesthenos.github.io/CODESTHENOS-PORTFOLIO/projects/primer-proyecto-fullstack.png")] max-md:bg-[url("https://codesthenos.github.io/CODESTHENOS-PORTFOLIO/projects/primer-proyecto-fullstack.png")]'}
-          ${proyect.name === 'Nodepop' && 'md:hover:bg-[url("https://codesthenos.github.io/CODESTHENOS-PORTFOLIO/projects/nodepop.png")] max-md:bg-[url("https://codesthenos.github.io/CODESTHENOS-PORTFOLIO/projects/nodepop.png")]'}
-          ${proyect.name === 'Juego StackTower' && 'md:hover:bg-[url("https://codesthenos.github.io/CODESTHENOS-PORTFOLIO/projects/juego-stack-tower.webp")] max-md:bg-[url("https://codesthenos.github.io/CODESTHENOS-PORTFOLIO/projects/juego-stack-tower.webp")]'}
-          ${proyect.name === 'Dashboard' && 'md:hover:bg-[url("https://codesthenos.github.io/CODESTHENOS-PORTFOLIO/projects/dashboard.jpg")] max-md:bg-[url("https://codesthenos.github.io/CODESTHENOS-PORTFOLIO/projects/dashboard.jpg")]'}
-          ${proyect.name === 'API JWT cookie auth' && 'md:hover:bg-[url("https://codesthenos.github.io/CODESTHENOS-PORTFOLIO/projects/api-jwt-cookie-auth.png")] max-md:bg-[url("https://codesthenos.github.io/CODESTHENOS-PORTFOLIO/projects/api-jwt-cookie-auth.png")]'}
-          ${proyect.name === 'Ejemplo de portfolio' && 'md:hover:bg-[url("https://codesthenos.github.io/CODESTHENOS-PORTFOLIO/projects/ejemplo-de-portfolio.png")] max-md:bg-[url("https://codesthenos.github.io/CODESTHENOS-PORTFOLIO/projects/ejemplo-de-portfolio.png")]'}
-          ${proyect.tailwindClasses}
-          bg-contain bg-center flex flex-col items-center justify-center p-4 m-4 rounded-lg shadow-md`}
+        class={`${proyect.tailwindClasses} group relative bg-contain md:hover:bg-gray-300 md:bg-no-repeat bg-center max-md:bg-gray-300 flex flex-col items-center justify-center p-4 rounded-lg shadow-md`}
       >
-        <h2 class="text-2xl font-bold text-gray-800">{proyect.name}</h2>
-        <a href={proyect.github} class="mt-4 text-blue-500 hover:underline">
+        <img
+          src={proyect.image}
+          alt={proyect.name}
+          class="md:group-hover:block md:hidden absolute inset-0 w-full h-full object-cover opacity-65 z-0 rounded-lg"
+        />
+        <h2 class="text-2xl font-bold text-gray-800 z-10">{proyect.name}</h2>
+        <a
+          href={proyect.github}
+          class="mt-4 text-blue-500 hover:underline z-10"
+        >
           Ver repositorio
         </a>
-        <a href={proyect.url} class="mt-4 text-blue-500 hover:underline">
+        <a href={proyect.url} class="mt-4 text-blue-500 hover:underline z-10">
           Ver proyecto
         </a>
       </div>
