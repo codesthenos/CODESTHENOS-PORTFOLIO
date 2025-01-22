@@ -13,8 +13,7 @@
       ],
       "url": "https://codesthenos.github.io/FIRST-FULLSTACK-PROYECT/",
       "github": "https://github.com/codesthenos/FIRST-FULLSTACK-PROYECT/",
-      "image": "",
-      "tailwindClasses": "md:row-span-2 md:col-span-2"
+      "image": ""
     },
     {
       "name": "Nodepop",
@@ -32,8 +31,7 @@
       ],
       "url": "https://kc-web17-backend-avanzado-node.onrender.com/",
       "github": "https://github.com/codesthenos/KC-WEB17-Backend-Avanzado-NODE-codesthenos",
-      "image": "",
-      "tailwindClasses": "md:row-span-1 md:col-span-1"
+      "image": ""
     },
     {
       "name": "Juego StackTower",
@@ -42,8 +40,7 @@
       "highlights": ["React", "Canvas", "useRef", "useState"],
       "url": "https://codesthenos.github.io/StackTower-React/",
       "github": "https://github.com/codesthenos/StackTower-React/",
-      "image": "",
-      "tailwindClasses": "md:row-span-1 md:col-span-1"
+      "image": ""
     },
     {
       "name": "Dashboard",
@@ -52,8 +49,7 @@
       "highlights": ["user@nextmail.com", "123456", "NextJS", "Vercel", "Neon"],
       "url": "https://vercel-next-learn-codesthenos.vercel.app/",
       "github": "https://github.com/codesthenos/Vercel-Next-learn-Codesthenos/",
-      "image": "",
-      "tailwindClasses": "md:row-span-1 md:col-span-1"
+      "image": ""
     },
     {
       "name": "API JWT cookie auth",
@@ -68,8 +64,7 @@
       ],
       "url": "https://api-auth-jwt-cookie.onrender.com/",
       "github": "https://github.com/codesthenos/API-AUTH-JWT-COOKIE/",
-      "image": "",
-      "tailwindClasses": "md:row-span-1 md:col-span-1"
+      "image": ""
     },
     {
       "name": "Ejemplo de portfolio",
@@ -78,8 +73,7 @@
       "highlights": ["React", "SPA in dev", "HTML", "CSS"],
       "url": "https://codesthenos.github.io/practica-2-usando-react/",
       "github": "https://github.com/codesthenos/practica-2-usando-react/",
-      "image": "",
-      "tailwindClasses": "md:row-span-1 md:col-span-1"
+      "image": ""
     }
   ]
 }
