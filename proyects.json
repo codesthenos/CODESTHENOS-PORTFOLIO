@@ -13,7 +13,7 @@
       ],
       "url": "https://codesthenos.github.io/FIRST-FULLSTACK-PROYECT/",
       "github": "https://github.com/codesthenos/FIRST-FULLSTACK-PROYECT/",
-      "image": "",
+      "image": "projects/primer-proyecto-fullstack.png",
       "tailwindClasses": "md:row-span-1 md:col-span-4 bg-red-300"
     },
     {

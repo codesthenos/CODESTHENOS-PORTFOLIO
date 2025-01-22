@@ -8,13 +8,15 @@ import { proyects } from '@proyects'
   {
     proyects.map((proyect) => (
       <div
-        class={`${proyect.tailwindClasses} flex flex-col items-center justify-center p-4 m-4 rounded-lg shadow-md`}
+        class={`${proyect.tailwindClasses}
+          ${proyect.name === 'Primer proyecto Fullstack' && 'hover:bg-[url("projects/primer-proyecto-fullstack.png")]'}
+          ${proyect.name === 'Nodepop' && 'hover:bg-[url("projects/nodepop.png")]'}
+          ${proyect.name === 'Juego StackTower' && 'hover:bg-[url("projects/juego-stack-tower.webp")]'}
+          ${proyect.name === 'Dashboard' && 'hover:bg-[url("projects/dashboard.jpg")]'}
+          ${proyect.name === 'API JWT cookie auth' && 'hover:bg-[url("projects/api-jwt-cookie-auth.png")]'}
+          ${proyect.name === 'Ejemplo de portfolio' && 'hover:bg-[url("projects/ejemplo-de-portfolio.png")]'}
+          bg-contain bg-center flex flex-col items-center justify-center p-4 m-4 rounded-lg shadow-md`}
       >
-        <img
-          src={proyect.image}
-          alt={proyect.name}
-          class="w-32 object-cover rounded-lg"
-        />
         <h2 class="text-2xl font-bold text-gray-800">{proyect.name}</h2>
         <a href={proyect.github} class="mt-4 text-blue-500 hover:underline">
           Ver repositorio
