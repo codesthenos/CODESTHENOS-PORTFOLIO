@@ -13,7 +13,8 @@
       ],
       "url": "https://codesthenos.github.io/FIRST-FULLSTACK-PROYECT/",
       "github": "https://github.com/codesthenos/FIRST-FULLSTACK-PROYECT/",
-      "image": ""
+      "image": "",
+      "tailwindClasses": "md:row-span-2 md:col-span-2"
     },
     {
       "name": "Nodepop",
@@ -30,7 +31,9 @@
         "Atlas MongoDB"
       ],
       "url": "https://kc-web17-backend-avanzado-node.onrender.com/",
-      "github": "https://github.com/codesthenos/KC-WEB17-Backend-Avanzado-NODE-codesthenos"
+      "github": "https://github.com/codesthenos/KC-WEB17-Backend-Avanzado-NODE-codesthenos",
+      "image": "",
+      "tailwindClasses": "md:row-span-1 md:col-span-1"
     },
     {
       "name": "Juego StackTower",
@@ -38,7 +41,9 @@
       "description": "Juego basado en el compartido de midudev pero usando React para aprender",
       "highlights": ["React", "Canvas", "useRef", "useState"],
       "url": "https://codesthenos.github.io/StackTower-React/",
-      "github": "https://github.com/codesthenos/StackTower-React/"
+      "github": "https://github.com/codesthenos/StackTower-React/",
+      "image": "",
+      "tailwindClasses": "md:row-span-1 md:col-span-1"
     },
     {
       "name": "Dashboard",
@@ -46,7 +51,9 @@
       "description": "Completado el curso de NextJS de Vercel e incluida la funcionalidad de poder marcar/desmarcar facturas y descargar una o varias a la vez en diferentes formatos",
       "highlights": ["user@nextmail.com", "123456", "NextJS", "Vercel", "Neon"],
       "url": "https://vercel-next-learn-codesthenos.vercel.app/",
-      "github": "https://github.com/codesthenos/Vercel-Next-learn-Codesthenos/"
+      "github": "https://github.com/codesthenos/Vercel-Next-learn-Codesthenos/",
+      "image": "",
+      "tailwindClasses": "md:row-span-1 md:col-span-1"
     },
     {
       "name": "API JWT cookie auth",
@@ -60,7 +67,9 @@
         "cookie auth"
       ],
       "url": "https://api-auth-jwt-cookie.onrender.com/",
-      "github": "https://github.com/codesthenos/API-AUTH-JWT-COOKIE/"
+      "github": "https://github.com/codesthenos/API-AUTH-JWT-COOKIE/",
+      "image": "",
+      "tailwindClasses": "md:row-span-1 md:col-span-1"
     },
     {
       "name": "Ejemplo de portfolio",
@@ -68,7 +77,9 @@
       "description": "Ejemplo de portfolio creado con vanilla HTML, CSS sin JS, migrado a React y el codigo del repo esta preparado para crear una SPA usando una libreria que es una copia del miduRouter inspirado en ReactRouter aunque en desarrollo muestra los estaticos y no los componentes de react, boton de cambio de theme incluido con useState",
       "highlights": ["React", "SPA in dev", "HTML", "CSS"],
       "url": "https://codesthenos.github.io/practica-2-usando-react/",
-      "github": "https://github.com/codesthenos/practica-2-usando-react/"
+      "github": "https://github.com/codesthenos/practica-2-usando-react/",
+      "image": "",
+      "tailwindClasses": "md:row-span-1 md:col-span-1"
     }
   ]
 }

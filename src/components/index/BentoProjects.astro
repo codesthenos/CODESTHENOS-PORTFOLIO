@@ -2,17 +2,23 @@
 import { proyects } from '@proyects'
 ---
 
-<section class="">
+<section
+  class="md:grid md:grid-cols-3 md:gap-4 md:max-w-3xl md:mx-auto border rounded-lg border-red-600"
+>
   {
     proyects.map((proyect) => (
-      <div class="flex flex-col items-center justify-center p-4 m-4 bg-white rounded-lg shadow-md">
+      <div
+        class={`${proyect.tailwindClasses} flex flex-col items-center justify-center p-4 m-4 bg-red-300 rounded-lg shadow-md`}
+      >
         <img
           src={proyect.image}
           alt={proyect.name}
-          class="w-64 h-64 object-cover rounded-lg"
+          class="w-32 object-cover rounded-lg"
         />
         <h2 class="text-2xl font-bold text-gray-800">{proyect.name}</h2>
-        <p class="text-lg text-gray-600">{proyect.description}</p>
+        <a href={proyect.github} class="mt-4 text-blue-500 hover:underline">
+          Ver repositorio
+        </a>
         <a href={proyect.url} class="mt-4 text-blue-500 hover:underline">
           Ver proyecto
         </a>
