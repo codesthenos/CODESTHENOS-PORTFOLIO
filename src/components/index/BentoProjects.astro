@@ -1,0 +1,22 @@
+---
+import { proyects } from '@proyects'
+---
+
+<section class="">
+  {
+    proyects.map((proyect) => (
+      <div class="flex flex-col items-center justify-center p-4 m-4 bg-white rounded-lg shadow-md">
+        <img
+          src={proyect.image}
+          alt={proyect.name}
+          class="w-64 h-64 object-cover rounded-lg"
+        />
+        <h2 class="text-2xl font-bold text-gray-800">{proyect.name}</h2>
+        <p class="text-lg text-gray-600">{proyect.description}</p>
+        <a href={proyect.url} class="mt-4 text-blue-500 hover:underline">
+          Ver proyecto
+        </a>
+      </div>
+    ))
+  }
+</section>

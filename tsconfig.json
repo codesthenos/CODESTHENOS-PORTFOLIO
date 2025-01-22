@@ -5,6 +5,9 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
+      "@proyects": [
+        "./proyects.json"
+      ],
       "@cv": [
         "./cv.json"
       ],
