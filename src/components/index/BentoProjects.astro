@@ -8,14 +8,7 @@ import { proyects } from '@proyects'
   {
     proyects.map((proyect) => (
       <div
-        class={`
-          ${proyect.name === 'Primer proyecto Fullstack' && 'md:row-span-1 md:col-span-4 bg-red-300'}
-          ${proyect.name === 'Nodepop' && 'md:row-span-1 md:col-span-3 bg-blue-300'}
-          ${proyect.name === 'Juego StackTower' && 'md:row-span-1 md:col-span-1 bg-green-300'}
-          ${proyect.name === 'Dashboard' && 'md:row-span-1 md:col-span-2 bg-yellow-300'}
-          ${proyect.name === 'API JWT cookie auth' && 'md:row-span-1 md:col-span-1 bg-violet-300'}
-          ${proyect.name === 'Ejemplo de portfolio' && 'md:row-span-1 md:col-span-1 bg-orange-300'}
-          flex flex-col items-center justify-center p-4 m-4 rounded-lg shadow-md`}
+        class={`${proyect.tailwindClasses} flex flex-col items-center justify-center p-4 m-4 rounded-lg shadow-md`}
       >
         <img
           src={proyect.image}
