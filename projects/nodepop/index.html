@@ -1,93 +1,75 @@
-<!DOCTYPE html><link rel="stylesheet" href="/CODESTHENOS-PORTFOLIO/astro/index.COruz_UP.css"><h1 class="text-center text-4xl font-bold mt-8">Nodepop</h1> <h2 id="como-usar-app-en-tu-ordenador">Como usar app en tu ordenador</h2>
-<p>Necesitas tener isntalado en tu ordenador <a href="https://git-scm.com/downloads">GIT</a>, <a href="https://nodejs.org/en/">NODE</a> y <a href="https://www.mongodb.com/try/download/community">MONGO</a> el proyecto fue creado con la version <strong>20.18</strong> de NODE</p>
+<!DOCTYPE html><link rel="stylesheet" href="/CODESTHENOS-PORTFOLIO/astro/index.Cf7uIrpA.css"><h1 class="text-center text-4xl font-bold mt-8">Nodepop</h1> <div class="max-w-screen-md mx-auto prose prose-a:no-underline prose-ol:list-none prose-li:p-0 prose-li:m-0 prose-ol:p-0 prose-ol:m-0"> <ol>
+<li>
+<h2 id="scaffolding-por-defecto"><a href="#scaffolding-creado-por-defecto-con-npx-express-generator----viewejs">Scaffolding por defecto</a></h2>
 <ol>
 <li>
-<p>Abre una consola de comando y navega hasta la carpeta donde quieras copiar el proyecto y escribe el comando <code>git clone https://github.com/codesthenos/KC-WEB17-Desarrollo-backend-NODE-codesthenos-.git</code> para copiar el proyecto</p>
+<p><a href="#estructura-de-carpetas">Estructura</a></p>
 </li>
 <li>
-<p>En la consola de comandos, navega hasta la carpeta que se ha creado y escribe <code>npm i</code> para instalar las <em>dependendias</em></p>
+<p><a href="#descripcion-de-carpetas-y-archivos">Descripcion</a></p>
 </li>
 <li>
-<p>Para poder hacer el siguiente paso, necesitas crear una conexion en mongodb y para poder usar la app, una vez tengas creada la conexion, puede ser en localhost o con <a href="Cj0KCQiA0MG5BhD1ARIsAEcZtwTU0IB1Mt9RkItYd8ZtDOZPeo6dN4HKRJITd1jPQe4NcqvY0BZtmHEaAnLYEALw_wcB">atlasMongoDB</a>, en los archivos del proyecto, busca <code>/lib/connectDB.js</code> y donde pone <strong>MONGO_URI</strong> poner la <code>connection string</code> que has creado.</p>
-<p>Ademas en el proyecto navega hasta <code>/lib/sessionManager.js</code> y donde pone <strong>MONGO_URI</strong> poner la <code>connection string</code> y donde pone <strong>SESSION_SECRET</strong> pon una cadena de texto cualquiera</p>
-</li>
-<li>
-<p>Ahora, estamos listos para, en la consola de comandos escribir <code>npm run resetDB</code> y poblar la base de datos que has creado con 2 usuarios con unos 50 productos cada uno, para poder usar esos usuarios para usar la app, puedes mirar su info en <strong>resetDB.js</strong> (tiene muchas lineas, pero porque los 100 prodcutos ocupan mucho), se encuentran facil usando control+f, si no, igualmente puedes registrar un usuario nuevo y usar la app</p>
-</li>
-<li>
-<p>Para ver la app, podemos usar <code>npm run dev</code> para arrancar la app en el <strong>PORT</strong> <em>4444</em> sin la variable de entorno <strong>DEBUG</strong> o usar <code>npm run debug</code> para arracar en el <strong>PORT</strong> <em>5555</em> y con la variable de entorno <strong>DEBUG</strong> para ver logs de errores y mensajes mas largos y detalladados de error en la app</p>
-</li>
-<li>
-<p>Una vez veas la app, los nombres de los botones hacen bastante intuitivo como usar las funcionalidades de la app</p>
-</li>
-</ol>
-<h2 id="como-funcionan-los-endpoints-y-los-query-params-en-home">Como funcionan los endpoints y los query params en home</h2>
-<ol>
-<li>
-<p>/ homepage query params:</p>
-<ol>
-<li>
-<p>skip limit —> paginacion</p>
-</li>
-<li>
-<p>sort —> orden</p>
-</li>
-<li>
-<p>name —> filtrar por name</p>
-</li>
-<li>
-<p>tag —> filtrar por tag</p>
-</li>
-<li>
-<p>price —> filtrar por precio pattern (123-456) solo accesible por url</p>
-</li>
-<li>
-<p>priceMin priceMax —> filtrar por precio minimo o maximo o ambos</p>
-</li>
-<li>
-<p>priceExact —> filtrar por precio exacto</p>
+<p><a href="#dependencias-de-npm-instaladas">Dependencias npm</a></p>
 </li>
 </ol>
 </li>
-</ol>
-<p>Ejemplo —> /?skip=&#x26;limi=t&#x26;sort=&#x26;name=&#x26;tag=&#x26;price=&#x26;priceMin=&#x26;priceMax=&#x26;priceExact=</p>
-<ol start="2">
-<li>/login con formulario para loguearse</li>
-<li>/logout para desloguearse</li>
-<li>/register para registrarse que hace login automatico</li>
-<li>/create-product/:id con formulario para crear producto si estas logueado</li>
-<li>/delete-product/:id borra producto y redirecciona a la homepage / solo si estas logueado</li>
-<li>/update-product/:id con formulario relleno con los datos actuales del producto solo siestas logueado</li>
-</ol>
-<h2 id="inidice-de-desarrollo">Inidice de desarrollo</h2>
+<li>
+<h2 id="scaffolding-final"><a href="#scaffolding-final">Scaffolding final</a></h2>
 <ol>
 <li>
-<p><a href="#scaffolding-creado-por-defecto-con-npx-express-generator----viewejs">Scaffolding por defecto</a></p>
-<p>1.1 <a href="#estructura-de-carpetas">Estructura</a></p>
-<p>1.2 <a href="#descripcion-de-carpetas-y-archivos">Descripcion</a></p>
-<p>1.3 <a href="#dependencias-de-npm-instaladas">Dependencias npm</a></p>
+<p><a href="#actualizacion">Actualizacion <code>npm</code></a></p>
 </li>
 <li>
-<p><a href="#scaffolding-final">Scaffolding final</a></p>
-<p>2.1 <a href="#actualizacion">Actualizacion <code>npm</code></a></p>
-<p>2.2 <a href="#edicion-de-scripts">Scripts</a></p>
-<p>2.3 <a href="#configuracion-standard">Linter <code>standard</code></a></p>
-<p>2.4 <a href="#migracion-de-commonjs-modules-a-ecmascript-modules">Migracion <code>commonJS</code> a <code>EcmaScript</code></a></p>
+<p><a href="#edicion-de-scripts">Scripts</a></p>
 </li>
 <li>
-<p><a href="#ruta-de-desarrollo">Ruta de desarrollo</a></p>
-<p>3.01 <a href="#comienzo-el-proyecto-cargando-el-scaffolding-final">Inicio del proyecto</a></p>
-<p>3.02 <a href="#creo-base-de-datos-mongodb-en-local">Base de datos</a></p>
-<p>3.03 <a href="#conecto-la-app-con-la-base-de-datos">Conecto base de datos</a></p>
-<p>3.04 <a href="#creo-los-modelos-user-y-product">Modelos</a></p>
-<p>3.05 <a href="#creo-script-que-resetea-la-base-de-datos-a-unos-valores-iniciales">Script <code>resetDB</code></a></p>
-<p>3.06 <a href="#primera-version-basica-de-la-app">App basica</a></p>
-<p>3.07 <a href="#manejo-de-sesion">Manejo de sesion</a></p>
-<p>3.08 <a href="#implementacion-del-login-y-logout">Login y logout</a></p>
-<p>3.09 <a href="#creacion-borrado-y-editado-de-productos">CRUD Productos</a></p>
-<p>3.10 <a href="#zod-schemas-y-middlewares">Zod schemas y middlewares</a></p>
-<p>3.11 <a href="#register">Register</a></p>
-<p>3.12 <a href="#filtros-y-paginacion">Filtros y paginacion</a></p>
+<p><a href="#configuracion-standard">Linter <code>standard</code></a></p>
+</li>
+<li>
+<p><a href="#migracion-de-commonjs-modules-a-ecmascript-modules">Migracion <code>commonJS</code> a <code>EcmaScript</code></a></p>
+</li>
+</ol>
+</li>
+<li>
+<h2 id="ruta-de-desarrollo"><a href="#ruta-de-desarrollo">Ruta de desarrollo</a></h2>
+<ol>
+<li>
+<p><a href="#comienzo-el-proyecto-cargando-el-scaffolding-final">Inicio del proyecto</a></p>
+</li>
+<li>
+<p><a href="#creo-base-de-datos-mongodb-en-local">Base de datos</a></p>
+</li>
+<li>
+<p><a href="#conecto-la-app-con-la-base-de-datos">Conecto base de datos</a></p>
+</li>
+<li>
+<p><a href="#creo-los-modelos-user-y-product">Modelos</a></p>
+</li>
+<li>
+<p><a href="#creo-script-que-resetea-la-base-de-datos-a-unos-valores-iniciales">Script <code>resetDB</code></a></p>
+</li>
+<li>
+<p><a href="#primera-version-basica-de-la-app">App basica</a></p>
+</li>
+<li>
+<p><a href="#manejo-de-sesion">Manejo de sesion</a></p>
+</li>
+<li>
+<p><a href="#implementacion-del-login-y-logout">Login y logout</a></p>
+</li>
+<li>
+<p><a href="#creacion-borrado-y-editado-de-productos">CRUD Productos</a></p>
+</li>
+<li>
+<p><a href="#zod-schemas-y-middlewares">Zod schemas y middlewares</a></p>
+</li>
+<li>
+<p><a href="#register">Register</a></p>
+</li>
+<li>
+<p><a href="#filtros-y-paginacion">Filtros y paginacion</a></p>
+</li>
+</ol>
 </li>
 </ol>
 <h2 id="scaffolding-creado-por-defecto-con-npx-express-generator----viewejs">Scaffolding creado por defecto con <a href="https://github.com/expressjs/generator"><code>npx express-generator . --view=ejs</code></a></h2>
@@ -170,7 +152,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="scaffolding-final"><a href="https://github.com/codesthenos/express-generator-standard-template">Scaffolding final</a></h2>
+<h2 id="scaffolding-final-1"><a href="https://github.com/codesthenos/express-generator-standard-template">Scaffolding final</a></h2>
 <ul>
 <li>
 <h3 id="actualizacion">Actualizacion</h3>
@@ -230,7 +212,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="ruta-de-desarrollo">Ruta de desarrollo</h2>
+<h2 id="ruta-de-desarrollo-1">Ruta de desarrollo</h2>
 <ul>
 <li>
 <h3 id="comienzo-el-proyecto-cargando-el-scaffolding-final">Comienzo el proyecto cargando el <a href="#scaffolding-final">scaffolding final</a></h3>
@@ -837,4 +819,4 @@ de un modo parecido en ambas rutas</p>
 <li>
 <p>Para finalizar, las vistas son bastante simplonas, todo <strong>handMade</strong> usando <em>vanilla</em> <strong>HTML</strong> y <strong>CSS</strong>, podria haber hecho mucho mejor las cosas de frontend, pero este no era el modulo para ello.</p>
 </li>
-</ol>
+</ol> </div>
