@@ -10,12 +10,14 @@ import { proyects } from '@proyects'
       <div
         class={`${proyect.tailwindClasses} group relative bg-contain md:hover:bg-gray-300 md:bg-no-repeat bg-center max-md:bg-gray-300 flex flex-col items-center justify-center p-4 rounded-lg shadow-md transition-all duration-700 ease-in-out`}
       >
-        <img
-          src={proyect.image}
-          alt={proyect.name}
-          class="md:group-hover:opacity-65 max-md:opacity-65 opacity-0 absolute inset-0 w-full h-full object-cover z-0 rounded-lg transition-opacity duration-700 ease-in-out"
-        />
-        <h2 class="text-2xl font-bold text-gray-800 z-10">{proyect.name}</h2>
+        <a href={`projects/${proyect.path}`}>
+          <img
+            src={proyect.image}
+            alt={proyect.name}
+            class="md:group-hover:opacity-65 max-md:opacity-65 opacity-0 absolute inset-0 w-full h-full object-cover z-0 rounded-lg transition-opacity duration-700 ease-in-out"
+          />
+          <h2 class="text-2xl font-bold text-gray-800 z-10">{proyect.name}</h2>
+        </a>
         <a
           href={proyect.github}
           class="mt-4 text-blue-500 hover:underline z-10"

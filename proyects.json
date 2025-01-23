@@ -14,7 +14,8 @@
       "url": "https://codesthenos.github.io/FIRST-FULLSTACK-PROYECT/",
       "github": "https://github.com/codesthenos/FIRST-FULLSTACK-PROYECT/",
       "image": "projects/primer-proyecto-fullstack.png",
-      "tailwindClasses": "md:row-span-1 md:col-span-4 md:bg-red-300"
+      "tailwindClasses": "md:row-span-1 md:col-span-4 md:bg-red-300",
+      "path": "primer-proyecto-fullstack"
     },
     {
       "name": "Nodepop",
@@ -33,7 +34,8 @@
       "url": "https://kc-web17-backend-avanzado-node.onrender.com/",
       "github": "https://github.com/codesthenos/KC-WEB17-Backend-Avanzado-NODE-codesthenos",
       "image": "projects/nodepop.png",
-      "tailwindClasses": "md:row-span-1 md:col-span-3 md:bg-blue-300"
+      "tailwindClasses": "md:row-span-1 md:col-span-3 md:bg-blue-300",
+      "path": "nodepop"
     },
     {
       "name": "Juego StackTower",
@@ -43,7 +45,8 @@
       "url": "https://codesthenos.github.io/StackTower-React/",
       "github": "https://github.com/codesthenos/StackTower-React/",
       "image": "projects/juego-stack-tower.webp",
-      "tailwindClasses": "md:row-span-1 md:col-span-1 md:bg-green-300"
+      "tailwindClasses": "md:row-span-1 md:col-span-1 md:bg-green-300",
+      "path": "juego-stack-tower"
     },
     {
       "name": "Dashboard",
@@ -53,7 +56,8 @@
       "url": "https://vercel-next-learn-codesthenos.vercel.app/",
       "github": "https://github.com/codesthenos/Vercel-Next-learn-Codesthenos/",
       "image": "projects/dashboard.jpg",
-      "tailwindClasses": "md:row-span-1 md:col-span-2 md:bg-yellow-300"
+      "tailwindClasses": "md:row-span-1 md:col-span-2 md:bg-yellow-300",
+      "path": "dashboard"
     },
     {
       "name": "API JWT cookie auth",
@@ -69,7 +73,8 @@
       "url": "https://api-auth-jwt-cookie.onrender.com/",
       "github": "https://github.com/codesthenos/API-AUTH-JWT-COOKIE/",
       "image": "projects/api-jwt-cookie-auth.png",
-      "tailwindClasses": "md:row-span-1 md:col-span-1 md:bg-violet-300"
+      "tailwindClasses": "md:row-span-1 md:col-span-1 md:bg-violet-300",
+      "path": "api-jwt-cookie-auth"
     },
     {
       "name": "Ejemplo de portfolio",
@@ -79,7 +84,8 @@
       "url": "https://codesthenos.github.io/practica-2-usando-react/",
       "github": "https://github.com/codesthenos/practica-2-usando-react/",
       "image": "projects/ejemplo-de-portfolio.png",
-      "tailwindClasses": "md:row-span-1 md:col-span-1 md:bg-orange-300"
+      "tailwindClasses": "md:row-span-1 md:col-span-1 md:bg-orange-300",
+      "path": "ejemplo-de-portfolio"
     }
   ]
 }

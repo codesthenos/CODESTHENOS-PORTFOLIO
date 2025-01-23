@@ -1,0 +1,18 @@
+---
+import { proyects } from '@proyects'
+
+export const getStaticPaths = async () => {
+  return proyects.map((project) => {
+    return {
+      params: { name: project.path },
+      props: { project }
+    }
+  })
+}
+
+const { project } = Astro.props
+
+const { name, github, url, image, tailwindClasses, path } = project
+---
+
+<h1 class="text-center text-4xl font-bold mt-8">{name}</h1>
