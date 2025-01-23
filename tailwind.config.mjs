@@ -12,7 +12,13 @@ export default {
     'md:bg-green-300',
     'md:bg-yellow-300',
     'md:bg-violet-300',
-    'md:bg-orange-300'
+    'md:bg-orange-300',
+    'order-1',
+    'order-2',
+    'order-3',
+    'order-4',
+    'order-5',
+    'order-6'
   ],
 	theme: {
 		extend: {},
