@@ -1,5 +1,5 @@
 ---
-import { getCollection } from 'astro:content'
+import { getCollection, render } from 'astro:content'
 
 export const getStaticPaths = async () => {
   const projects = await getCollection('projects')
@@ -15,6 +15,9 @@ export const getStaticPaths = async () => {
 const { project } = Astro.props
 
 const { name, github, url, image, tailwindClasses, path } = project.data
+
+const { Content } = await render(project)
 ---
 
 <h1 class="text-center text-4xl font-bold mt-8">{name}</h1>
+<Content />
