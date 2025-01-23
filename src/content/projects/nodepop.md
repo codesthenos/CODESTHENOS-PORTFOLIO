@@ -7,88 +7,49 @@ tailwindClasses: md:row-span-1 md:col-span-3 md:bg-blue-300 order-2
 path: nodepop
 ---
 
-## Como usar app en tu ordenador
+1. ## [Scaffolding por defecto](#scaffolding-creado-por-defecto-con-npx-express-generator----viewejs)
 
-Necesitas tener isntalado en tu ordenador [GIT](https://git-scm.com/downloads), [NODE](https://nodejs.org/en/) y [MONGO](https://www.mongodb.com/try/download/community) el proyecto fue creado con la version **20.18** de NODE
+   1. [Estructura](#estructura-de-carpetas)
 
-1. Abre una consola de comando y navega hasta la carpeta donde quieras copiar el proyecto y escribe el comando `git clone https://github.com/codesthenos/KC-WEB17-Desarrollo-backend-NODE-codesthenos-.git` para copiar el proyecto
+   2. [Descripcion](#descripcion-de-carpetas-y-archivos)
 
-2. En la consola de comandos, navega hasta la carpeta que se ha creado y escribe `npm i` para instalar las _dependendias_
-3. Para poder hacer el siguiente paso, necesitas crear una conexion en mongodb y para poder usar la app, una vez tengas creada la conexion, puede ser en localhost o con [atlasMongoDB](Cj0KCQiA0MG5BhD1ARIsAEcZtwTU0IB1Mt9RkItYd8ZtDOZPeo6dN4HKRJITd1jPQe4NcqvY0BZtmHEaAnLYEALw_wcB), en los archivos del proyecto, busca `/lib/connectDB.js` y donde pone **MONGO_URI** poner la `connection string` que has creado.
+   3. [Dependencias npm](#dependencias-de-npm-instaladas)
 
-   Ademas en el proyecto navega hasta `/lib/sessionManager.js` y donde pone **MONGO_URI** poner la `connection string` y donde pone **SESSION_SECRET** pon una cadena de texto cualquiera
+2. ## [Scaffolding final](#scaffolding-final)
 
-4. Ahora, estamos listos para, en la consola de comandos escribir `npm run resetDB` y poblar la base de datos que has creado con 2 usuarios con unos 50 productos cada uno, para poder usar esos usuarios para usar la app, puedes mirar su info en **resetDB.js** (tiene muchas lineas, pero porque los 100 prodcutos ocupan mucho), se encuentran facil usando control+f, si no, igualmente puedes registrar un usuario nuevo y usar la app
-5. Para ver la app, podemos usar `npm run dev` para arrancar la app en el **PORT** _4444_ sin la variable de entorno **DEBUG** o usar `npm run debug` para arracar en el **PORT** _5555_ y con la variable de entorno **DEBUG** para ver logs de errores y mensajes mas largos y detalladados de error en la app
-6. Una vez veas la app, los nombres de los botones hacen bastante intuitivo como usar las funcionalidades de la app
+   1. [Actualizacion `npm`](#actualizacion)
 
-## Como funcionan los endpoints y los query params en home
+   2. [Scripts](#edicion-de-scripts)
 
-1. / homepage query params:
+   3. [Linter `standard`](#configuracion-standard)
 
-   1. skip limit --> paginacion
+   4. [Migracion `commonJS` a `EcmaScript`](#migracion-de-commonjs-modules-a-ecmascript-modules)
 
-   2. sort --> orden
-   3. name --> filtrar por name
-   4. tag --> filtrar por tag
-   5. price --> filtrar por precio pattern (123-456) solo accesible por url
-   6. priceMin priceMax --> filtrar por precio minimo o maximo o ambos
-   7. priceExact --> filtrar por precio exacto
+3. ## [Ruta de desarrollo](#ruta-de-desarrollo)
 
-Ejemplo --> /?skip=&limi=t&sort=&name=&tag=&price=&priceMin=&priceMax=&priceExact=
+   1. [Inicio del proyecto](#comienzo-el-proyecto-cargando-el-scaffolding-final)
 
-2. /login con formulario para loguearse
-3. /logout para desloguearse
-4. /register para registrarse que hace login automatico
-5. /create-product/:id con formulario para crear producto si estas logueado
-6. /delete-product/:id borra producto y redirecciona a la homepage / solo si estas logueado
-7. /update-product/:id con formulario relleno con los datos actuales del producto solo siestas logueado
+   2. [Base de datos](#creo-base-de-datos-mongodb-en-local)
 
-## Inidice de desarrollo
+   3. [Conecto base de datos](#conecto-la-app-con-la-base-de-datos)
 
-1. [Scaffolding por defecto](#scaffolding-creado-por-defecto-con-npx-express-generator----viewejs)
+   4. [Modelos](#creo-los-modelos-user-y-product)
 
-   1.1 [Estructura](#estructura-de-carpetas)
+   5. [Script `resetDB`](#creo-script-que-resetea-la-base-de-datos-a-unos-valores-iniciales)
 
-   1.2 [Descripcion](#descripcion-de-carpetas-y-archivos)
+   6. [App basica](#primera-version-basica-de-la-app)
 
-   1.3 [Dependencias npm](#dependencias-de-npm-instaladas)
+   7. [Manejo de sesion](#manejo-de-sesion)
 
-2. [Scaffolding final](#scaffolding-final)
+   8. [Login y logout](#implementacion-del-login-y-logout)
 
-   2.1 [Actualizacion `npm`](#actualizacion)
+   9. [CRUD Productos](#creacion-borrado-y-editado-de-productos)
 
-   2.2 [Scripts](#edicion-de-scripts)
+   10. [Zod schemas y middlewares](#zod-schemas-y-middlewares)
 
-   2.3 [Linter `standard`](#configuracion-standard)
+   11. [Register](#register)
 
-   2.4 [Migracion `commonJS` a `EcmaScript`](#migracion-de-commonjs-modules-a-ecmascript-modules)
-
-3. [Ruta de desarrollo](#ruta-de-desarrollo)
-
-   3.01 [Inicio del proyecto](#comienzo-el-proyecto-cargando-el-scaffolding-final)
-
-   3.02 [Base de datos](#creo-base-de-datos-mongodb-en-local)
-
-   3.03 [Conecto base de datos](#conecto-la-app-con-la-base-de-datos)
-
-   3.04 [Modelos](#creo-los-modelos-user-y-product)
-
-   3.05 [Script `resetDB`](#creo-script-que-resetea-la-base-de-datos-a-unos-valores-iniciales)
-
-   3.06 [App basica](#primera-version-basica-de-la-app)
-
-   3.07 [Manejo de sesion](#manejo-de-sesion)
-
-   3.08 [Login y logout](#implementacion-del-login-y-logout)
-
-   3.09 [CRUD Productos](#creacion-borrado-y-editado-de-productos)
-
-   3.10 [Zod schemas y middlewares](#zod-schemas-y-middlewares)
-
-   3.11 [Register](#register)
-
-   3.12 [Filtros y paginacion](#filtros-y-paginacion)
+   12. [Filtros y paginacion](#filtros-y-paginacion)
 
 ## Scaffolding creado por defecto con [`npx express-generator . --view=ejs`](https://github.com/expressjs/generator)
 

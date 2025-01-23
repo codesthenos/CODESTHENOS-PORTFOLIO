@@ -9,8 +9,8 @@ path: primer-proyecto-fullstack
 
 ## BACKEND-API
 
-TODO DESCRIPCION --> API para servir a la app de frontend
+TODO DESCRIPCION -> API para servir a la app de frontend
 
 ## FRONTEND-APP
 
-TODO DESCRIPCION --> APP de front end
+TODO DESCRIPCION -> APP de front end
