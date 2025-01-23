@@ -16,8 +16,12 @@ import { proyects } from '@proyects'
             alt={proyect.name}
             class="md:group-hover:opacity-65 max-md:opacity-65 opacity-0 absolute inset-0 w-full h-full object-cover z-0 rounded-lg transition-opacity duration-700 ease-in-out"
           />
-          <h2 class="text-2xl font-bold text-gray-800 z-10">{proyect.name}</h2>
         </a>
+
+        <h2 class="text-2xl font-bold text-gray-800 z-10">
+          <a href={`projects/${proyect.path}`}>{proyect.name}</a>
+        </h2>
+
         <a
           href={proyect.github}
           class="mt-4 text-blue-500 hover:underline z-10"
