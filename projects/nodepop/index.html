@@ -1,1 +1,840 @@
-<!DOCTYPE html><link rel="stylesheet" href="/CODESTHENOS-PORTFOLIO/astro/index.COruz_UP.css"><h1 class="text-center text-4xl font-bold mt-8">Nodepop</h1>
+<!DOCTYPE html><link rel="stylesheet" href="/CODESTHENOS-PORTFOLIO/astro/index.COruz_UP.css"><h1 class="text-center text-4xl font-bold mt-8">Nodepop</h1> <h2 id="como-usar-app-en-tu-ordenador">Como usar app en tu ordenador</h2>
+<p>Necesitas tener isntalado en tu ordenador <a href="https://git-scm.com/downloads">GIT</a>, <a href="https://nodejs.org/en/">NODE</a> y <a href="https://www.mongodb.com/try/download/community">MONGO</a> el proyecto fue creado con la version <strong>20.18</strong> de NODE</p>
+<ol>
+<li>
+<p>Abre una consola de comando y navega hasta la carpeta donde quieras copiar el proyecto y escribe el comando <code>git clone https://github.com/codesthenos/KC-WEB17-Desarrollo-backend-NODE-codesthenos-.git</code> para copiar el proyecto</p>
+</li>
+<li>
+<p>En la consola de comandos, navega hasta la carpeta que se ha creado y escribe <code>npm i</code> para instalar las <em>dependendias</em></p>
+</li>
+<li>
+<p>Para poder hacer el siguiente paso, necesitas crear una conexion en mongodb y para poder usar la app, una vez tengas creada la conexion, puede ser en localhost o con <a href="Cj0KCQiA0MG5BhD1ARIsAEcZtwTU0IB1Mt9RkItYd8ZtDOZPeo6dN4HKRJITd1jPQe4NcqvY0BZtmHEaAnLYEALw_wcB">atlasMongoDB</a>, en los archivos del proyecto, busca <code>/lib/connectDB.js</code> y donde pone <strong>MONGO_URI</strong> poner la <code>connection string</code> que has creado.</p>
+<p>Ademas en el proyecto navega hasta <code>/lib/sessionManager.js</code> y donde pone <strong>MONGO_URI</strong> poner la <code>connection string</code> y donde pone <strong>SESSION_SECRET</strong> pon una cadena de texto cualquiera</p>
+</li>
+<li>
+<p>Ahora, estamos listos para, en la consola de comandos escribir <code>npm run resetDB</code> y poblar la base de datos que has creado con 2 usuarios con unos 50 productos cada uno, para poder usar esos usuarios para usar la app, puedes mirar su info en <strong>resetDB.js</strong> (tiene muchas lineas, pero porque los 100 prodcutos ocupan mucho), se encuentran facil usando control+f, si no, igualmente puedes registrar un usuario nuevo y usar la app</p>
+</li>
+<li>
+<p>Para ver la app, podemos usar <code>npm run dev</code> para arrancar la app en el <strong>PORT</strong> <em>4444</em> sin la variable de entorno <strong>DEBUG</strong> o usar <code>npm run debug</code> para arracar en el <strong>PORT</strong> <em>5555</em> y con la variable de entorno <strong>DEBUG</strong> para ver logs de errores y mensajes mas largos y detalladados de error en la app</p>
+</li>
+<li>
+<p>Una vez veas la app, los nombres de los botones hacen bastante intuitivo como usar las funcionalidades de la app</p>
+</li>
+</ol>
+<h2 id="como-funcionan-los-endpoints-y-los-query-params-en-home">Como funcionan los endpoints y los query params en home</h2>
+<ol>
+<li>
+<p>/ homepage query params:</p>
+<ol>
+<li>
+<p>skip limit —> paginacion</p>
+</li>
+<li>
+<p>sort —> orden</p>
+</li>
+<li>
+<p>name —> filtrar por name</p>
+</li>
+<li>
+<p>tag —> filtrar por tag</p>
+</li>
+<li>
+<p>price —> filtrar por precio pattern (123-456) solo accesible por url</p>
+</li>
+<li>
+<p>priceMin priceMax —> filtrar por precio minimo o maximo o ambos</p>
+</li>
+<li>
+<p>priceExact —> filtrar por precio exacto</p>
+</li>
+</ol>
+</li>
+</ol>
+<p>Ejemplo —> /?skip=&#x26;limi=t&#x26;sort=&#x26;name=&#x26;tag=&#x26;price=&#x26;priceMin=&#x26;priceMax=&#x26;priceExact=</p>
+<ol start="2">
+<li>/login con formulario para loguearse</li>
+<li>/logout para desloguearse</li>
+<li>/register para registrarse que hace login automatico</li>
+<li>/create-product/:id con formulario para crear producto si estas logueado</li>
+<li>/delete-product/:id borra producto y redirecciona a la homepage / solo si estas logueado</li>
+<li>/update-product/:id con formulario relleno con los datos actuales del producto solo siestas logueado</li>
+</ol>
+<h2 id="inidice-de-desarrollo">Inidice de desarrollo</h2>
+<ol>
+<li>
+<p><a href="#scaffolding-creado-por-defecto-con-npx-express-generator----viewejs">Scaffolding por defecto</a></p>
+<p>1.1 <a href="#estructura-de-carpetas">Estructura</a></p>
+<p>1.2 <a href="#descripcion-de-carpetas-y-archivos">Descripcion</a></p>
+<p>1.3 <a href="#dependencias-de-npm-instaladas">Dependencias npm</a></p>
+</li>
+<li>
+<p><a href="#scaffolding-final">Scaffolding final</a></p>
+<p>2.1 <a href="#actualizacion">Actualizacion <code>npm</code></a></p>
+<p>2.2 <a href="#edicion-de-scripts">Scripts</a></p>
+<p>2.3 <a href="#configuracion-standard">Linter <code>standard</code></a></p>
+<p>2.4 <a href="#migracion-de-commonjs-modules-a-ecmascript-modules">Migracion <code>commonJS</code> a <code>EcmaScript</code></a></p>
+</li>
+<li>
+<p><a href="#ruta-de-desarrollo">Ruta de desarrollo</a></p>
+<p>3.01 <a href="#comienzo-el-proyecto-cargando-el-scaffolding-final">Inicio del proyecto</a></p>
+<p>3.02 <a href="#creo-base-de-datos-mongodb-en-local">Base de datos</a></p>
+<p>3.03 <a href="#conecto-la-app-con-la-base-de-datos">Conecto base de datos</a></p>
+<p>3.04 <a href="#creo-los-modelos-user-y-product">Modelos</a></p>
+<p>3.05 <a href="#creo-script-que-resetea-la-base-de-datos-a-unos-valores-iniciales">Script <code>resetDB</code></a></p>
+<p>3.06 <a href="#primera-version-basica-de-la-app">App basica</a></p>
+<p>3.07 <a href="#manejo-de-sesion">Manejo de sesion</a></p>
+<p>3.08 <a href="#implementacion-del-login-y-logout">Login y logout</a></p>
+<p>3.09 <a href="#creacion-borrado-y-editado-de-productos">CRUD Productos</a></p>
+<p>3.10 <a href="#zod-schemas-y-middlewares">Zod schemas y middlewares</a></p>
+<p>3.11 <a href="#register">Register</a></p>
+<p>3.12 <a href="#filtros-y-paginacion">Filtros y paginacion</a></p>
+</li>
+</ol>
+<h2 id="scaffolding-creado-por-defecto-con-npx-express-generator----viewejs">Scaffolding creado por defecto con <a href="https://github.com/expressjs/generator"><code>npx express-generator . --view=ejs</code></a></h2>
+<ul>
+<li>
+<h3 id="estructura-de-carpetas"><em>Estructura</em> de <strong>carpetas</strong></h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>root/</span></span>
+<span class="line"><span>  |</span></span>
+<span class="line"><span>  |--bin/</span></span>
+<span class="line"><span>  |   |--www</span></span>
+<span class="line"><span>  |</span></span>
+<span class="line"><span>  |--public/</span></span>
+<span class="line"><span>  |     |--stylesheets/</span></span>
+<span class="line"><span>  |             |--style.css</span></span>
+<span class="line"><span>  |</span></span>
+<span class="line"><span>  |--routes/</span></span>
+<span class="line"><span>  |     |--index.js</span></span>
+<span class="line"><span>  |     |--users.js</span></span>
+<span class="line"><span>  |</span></span>
+<span class="line"><span>  |--views/</span></span>
+<span class="line"><span>  |     |--error.ejs</span></span>
+<span class="line"><span>  |     |--index.ejs</span></span>
+<span class="line"><span>  |</span></span>
+<span class="line"><span>  |--app.js</span></span>
+<span class="line"><span>  |--package.json</span></span></code></pre>
+</li>
+<li>
+<h3 id="descripcion-de-carpetas-y-archivos"><em>Descripcion</em> de <strong>carpetas</strong> y <strong>archivos</strong></h3>
+<ul>
+<li>
+<p><code>root/</code>: Raiz del proyecto</p>
+</li>
+<li>
+<p><code>bin/</code>: Contiene el archivo <code>www</code> en el que importamos <code>app.js</code> y que usamos como <strong>inicio</strong> de la app</p>
+</li>
+<li>
+<p><code>public/</code>: Contiene archivos <code>.html</code> <code>.css</code> <code>.js</code> que se sirven de forma <strong>estatica</strong></p>
+</li>
+<li>
+<p><code>routes/</code>: Contiene archivos <code>.js</code> en el que defino como son las <strong>rutas</strong></p>
+</li>
+<li>
+<p><code>views/</code>: Contiene archivos <code>.ejs</code> en el que defino las <strong>vistas</strong></p>
+</li>
+<li>
+<p><code>app.js</code>: Archivo en el que usamos los <strong>middlewares</strong> de <em>express</em>, las rutas de <code>routes/</code> y el <strong>middleware</strong> de <em>error</em></p>
+</li>
+<li>
+<p><code>package.json</code>: Archivo que contiene la informacion del proyecto de las <em>dependencias</em> de <a href="https://www.npmjs.com/"><code>npm</code></a> que usa</p>
+</li>
+</ul>
+</li>
+<li>
+<h3 id="dependencias-de-npm-instaladas"><em>Dependencias</em> de <code>npm</code> instaladas</h3>
+<ul>
+<li>
+<p><a href="https://www.npmjs.com/package/cookie-parser"><code>cookie-parser</code></a></p>
+<p><em>middleware</em> que nos permite acceder a las cookies enviadas por el cliente</p>
+</li>
+<li>
+<p><a href="https://www.npmjs.com/package/debug"><code>debug</code></a></p>
+<p><em>funcion</em> que nos permite controlar que <em>logs</em> mostramos usando la variable de entorno <em>DEBUG</em></p>
+</li>
+<li>
+<p><a href="https://www.npmjs.com/package/ejs"><code>ejs</code></a></p>
+<p><em>view engine</em> que nos permite insertar javascript en el <em>HTML</em></p>
+</li>
+<li>
+<p><a href="https://www.npmjs.com/package/express"><code>express</code></a></p>
+<p><em>framework</em> que, entre otras cosas, nos facilita el manejo de <em>rutas</em> y <em>middlewares</em></p>
+</li>
+<li>
+<p><a href="https://www.npmjs.com/package/http-errors"><code>http-errors</code></a></p>
+<p><em>funcion</em> que nos facilita la creacion de <em>errores</em></p>
+</li>
+<li>
+<p><a href="https://www.npmjs.com/package/morgan"><code>morgan</code></a></p>
+<p><em>middleware</em> que nos muestra <em>logs</em> de las <em>request</em></p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="scaffolding-final"><a href="https://github.com/codesthenos/express-generator-standard-template">Scaffolding final</a></h2>
+<ul>
+<li>
+<h3 id="actualizacion">Actualizacion</h3>
+<p><strong>Actualizo</strong> las dependencias de <code>npm</code> para tratar las <strong>vulnerabilities</strong> que el <a href="#scaffolding-creado-por-defecto-con-npx-express-generator----viewejs">anterior <em>scaffolding</em></a> tenia</p>
+</li>
+<li>
+<h3 id="edicion-de-scripts">Edicion de scripts</h3>
+<p>Edito el <strong>script</strong> <code>"start"</code> para arrancar el servidor usando <code>node --watch</code> y creo <em>scripts</em> para arrancar el servidor en modo <strong>dev</strong> y modo <strong>debug</strong>:</p>
+<ul>
+<li>
+<p><code>"dev": "cross-env PORT=4444 npm start"</code></p>
+</li>
+<li>
+<p><code>"debug": "cross-env PORT=5555 DEBUG=npx-express-generator-ejs:* npm start"</code></p>
+</li>
+</ul>
+<p>Instalo <strong>cross-env</strong> usando <a href="https://www.npmjs.com/package/cross-env"><code>npm i cross-env</code></a> para que las variables de entorno se lean bien en todos los sistemas</p>
+</li>
+<li>
+<h3 id="configuracion-standard">Configuracion <a href="https://standardjs.com/"><code>standard</code></a></h3>
+<p>Incluyo la <em>propiedad</em> <code>"eslintConfig": { "extends": "standard" }</code> en el <em>package.json</em> e instalando la dependencia usando <a href="https://www.npmjs.com/package/standard"><code>npm i standard -D</code></a>, como herramienta para:</p>
+<ul>
+<li>
+<p><strong>linting</strong>: conjunto de reglas que ayudan al control de errores mientras escribimos codigo</p>
+</li>
+<li>
+<p><strong>formateo</strong>: reglas especificas de como se ha de colocar el codigo, indentado, puntos y comas…</p>
+</li>
+</ul>
+<p>Creo <strong>script</strong> <code>"lint": "standard"</code> para obtener en consola el resultado del lintado detallado</p>
+<p>Configuro el <em>VSCode</em> para que cada vez que guardo automaticamente se apliquen los cambios provinientes de los <em>warnings</em> de <strong>standard</strong></p>
+</li>
+<li>
+<h3 id="migracion-de-commonjs-modules-a-ecmascript-modules">Migracion de <strong>CommonJS Modules</strong> a <strong>ECMASCRIPT Modules</strong>:</h3>
+<ul>
+<li>
+<p>Incluyo la propiedad <code>"type": "module"</code> en el <em>top level</em> del <strong>package.json</strong></p>
+</li>
+<li>
+<p>Cambio <code>__dirname</code> por <code>import.meta.dirname</code> en <strong>app.js</strong></p>
+</li>
+<li>
+<p>Cambio todos los <code>require</code> y <code>module.exports</code> por <code>import</code> <code>from</code> y <code>export</code> <code>export default</code></p>
+</li>
+<li>
+<p>La sintaxis de usar la <em>libreria</em> <strong>debug</strong> cambia:</p>
+<ul>
+<li><strong>Antes</strong> una sola linea:
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> debug</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> require</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'debug'</span><span style="color:#E1E4E8">)(</span><span style="color:#9ECBFF">'npx-express-generator-ejs:server'</span><span style="color:#E1E4E8">)</span></span></code></pre>
+</li>
+<li><strong>Ahora</strong> dos lineas:
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> debugLib </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> 'debug'</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> debug</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> debugLib</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'npx-express-generator-ejs:server'</span><span style="color:#E1E4E8">)</span></span></code></pre>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="ruta-de-desarrollo">Ruta de desarrollo</h2>
+<ul>
+<li>
+<h3 id="comienzo-el-proyecto-cargando-el-scaffolding-final">Comienzo el proyecto cargando el <a href="#scaffolding-final">scaffolding final</a></h3>
+<ol>
+<li>
+<p>Clono el <a href="https://github.com/codesthenos/express-generator-standard-template">repo</a> en la carpeta <strong>PRACTICA</strong></p>
+</li>
+<li>
+<p>Cambio el <code>"name"</code> en el <strong>package.json</strong> y en el <strong>package-lock.json</strong></p>
+</li>
+<li>
+<p>Hago <code>npm i</code> para instalar las dependencias</p>
+</li>
+</ol>
+</li>
+<li>
+<h3 id="creo-base-de-datos-mongodb-en-local">Creo base de datos MongoDB en local</h3>
+<ol>
+<li>
+<p>Descargo en instalo <a href="https://www.mongodb.com/try/download/community-kubernetes-operator">MongoDB Community Server</a> y creo una conexion</p>
+</li>
+<li>
+<p>Instalo la extension <a href="https://marketplace.visualstudio.com/items?itemName=mongodb.mongodb-vscode">MongoDB for VS Code</a> en <em>Visual Studio Code</em> para ir comprobando los cambios en la <strong>base de datos</strong></p>
+</li>
+<li>
+<p>Instalo la extension <a href="https://marketplace.visualstudio.com/items?itemName=rangav.vscode-thunder-client">Thunder Client</a> para hacer peticiones <strong>post</strong> y <strong>put</strong> comodamente</p>
+</li>
+</ol>
+</li>
+<li>
+<h3 id="conecto-la-app-con-la-base-de-datos">Conecto la app con la base de datos</h3>
+<ol>
+<li>
+<p>Instalo <a href="https://mongoosejs.com/"><strong>mongoose</strong></a> usando <a href="https://www.npmjs.com/package/mongoose"><code>npm i mongoose</code></a></p>
+</li>
+<li>
+<p>Creo la funcion <code>connectDB</code> usando la funcion <a href="https://mongoosejs.com/docs/connections.html">mongoose.connect(MONGODB_URI)</a> para conectar la <strong>app</strong> a la <strong>base de datos</strong></p>
+</li>
+<li>
+<p>Llamo a la funcion <code>connectDB</code> en el archivo <code>www</code> justo antes del <code>server.listen(port)</code></p>
+</li>
+<li>
+<p>Creo un <strong>log</strong> y manejo de <strong>errores</strong> para comprobar si la <em>conexion</em> ha sido satisfactoria</p>
+</li>
+</ol>
+</li>
+<li>
+<h3 id="creo-los-modelos-user-y-product">Creo los modelos User y Product</h3>
+<ol>
+<li>
+<p>Creo <strong>userSchema</strong> y <strong>productSchema</strong> usando la funcion <a href="https://mongoosejs.com/docs/guide.html">Schema</a> de <a href="https://mongoosejs.com/">mongoose</a></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#E1E4E8"> &#x3C;</span><span style="color:#79B8FF">nameSchema</span><span style="color:#E1E4E8">> </span><span style="color:#F97583">=</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> Schema</span><span style="color:#E1E4E8">({&#x3C;properties and constraints>})</span></span></code></pre>
+</li>
+<li>
+<p>Exporto modelos <strong>User</strong> y <strong>Product</strong> usando la funcion <a href="https://mongoosejs.com/docs/models.html">model</a> de <a href="https://mongoosejs.com/">mongoose</a></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#E1E4E8"> &#x3C;</span><span style="color:#79B8FF">modelName</span><span style="color:#E1E4E8">> </span><span style="color:#F97583">=</span><span style="color:#B392F0"> model</span><span style="color:#E1E4E8">(&#x3C;</span><span style="color:#79B8FF">collectionName</span><span style="color:#E1E4E8">>, &#x3C;</span><span style="color:#79B8FF">nameSchema</span><span style="color:#E1E4E8">>)</span></span></code></pre>
+</li>
+<li>
+<p>Instalo <a href="https://github.com/kelektiv/node.bcrypt.js">bcrypt</a> usando <a href="https://www.npmjs.com/package/bcrypt"><code>npm i bcrypt</code></a> para crear en el <em>modelo</em> <strong>User</strong> un <em>metodo de Schema</em> para <strong>encriptar</strong> la <strong>password</strong> y un <em>metodo de Instancia</em> para <strong>comparar passwords</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#E1E4E8">userSchema.statics.</span><span style="color:#B392F0">hashPassword</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">rawPassword</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span></span>
+<span class="line"><span style="color:#E1E4E8">  bcrypt.</span><span style="color:#B392F0">hash</span><span style="color:#E1E4E8">(rawPassword, </span><span style="color:#79B8FF">10</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">userSchema.methods.</span><span style="color:#B392F0">comparePassword</span><span style="color:#F97583"> =</span><span style="color:#F97583"> function</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">rawPassword</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> bcrypt.</span><span style="color:#B392F0">compare</span><span style="color:#E1E4E8">(rawPassword, </span><span style="color:#79B8FF">this</span><span style="color:#E1E4E8">.password)</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+</li>
+<li>
+<p>En el <em>modelo</em> <strong>Product</strong> la <em>propiedad</em> <strong>owner</strong> es una <em>referencia</em> al <em>modelo</em> <strong>User</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#B392F0">owner</span><span style="color:#E1E4E8">: { </span><span style="color:#B392F0">type</span><span style="color:#E1E4E8">: Schema.Types.ObjectId, </span><span style="color:#B392F0">ref</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">'User'</span><span style="color:#E1E4E8"> }</span></span></code></pre>
+</li>
+</ol>
+</li>
+<li>
+<h3 id="creo-script-que-resetea-la-base-de-datos-a-unos-valores-iniciales">Creo script que resetea la base de datos a unos valores iniciales</h3>
+<ol>
+<li>
+<p>Importo <a href="https://nodejs.org/api/readline.html#readlinecreateinterfaceoptions">createInterface</a> desde <a href="https://nodejs.org/api/readline.html">‘node:readline’</a> para poder interactuar por consola</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { createInterface } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> 'node:readline'</span></span></code></pre>
+</li>
+<li>
+<p>Creo funcion <strong>ask</strong> para antes de <em>resetear</em> la base de datos a los valores por <strong>defecto</strong> preguntar si estamos seguros</p>
+</li>
+<li>
+<p>Creo las funciones para <strong>borrar</strong> todos los registros e <strong>insertar</strong> los registros por <em>defecto</em> tanto en <strong>User</strong> como en <strong>Product</strong></p>
+</li>
+<li>
+<p>Creo conexion a la base de dato <strong>MongoDB</strong></p>
+</li>
+<li>
+<p>Pregunto usando <strong>ask</strong> si estamos seguros del reseteo</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#F97583">if</span><span style="color:#E1E4E8"> (answer </span><span style="color:#F97583">!==</span><span style="color:#9ECBFF"> 'yes'</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#E1E4E8">  console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'RESET ABORTED'</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">  process.</span><span style="color:#B392F0">exit</span><span style="color:#E1E4E8">()</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+</li>
+<li>
+<p>Reseteo primero <strong>User</strong> ya que el campo <strong>owner</strong> de <strong>Product</strong> es una <em>referencia</em> a <strong>User</strong></p>
+</li>
+<li>
+<p>Reseteo <strong>Product</strong> y termino el proceso con <code>process.exit()</code></p>
+</li>
+<li>
+<p>Creo <strong>script</strong> en el <strong>package.json</strong> para <em>ejecutar</em> el archivo <strong>resetDB.js</strong></p>
+<p><code>"resetDB": "node resetDB"</code></p>
+</li>
+</ol>
+</li>
+<li>
+<h3 id="primera-version-basica-de-la-app">Primera version basica de la App</h3>
+<ol>
+<li>
+<p>Borro la carpeta <strong>routes</strong> ya que no voy a usar <code>import { Router } from 'express'</code></p>
+</li>
+<li>
+<p>Creo carpeta <strong>controllers</strong> en la que creo el archivo <strong>homeController</strong></p>
+</li>
+<li>
+<p>Creo y exporto <strong>middleware</strong> que importare y usare en <strong>app.js</strong> para la <em>ruta home</em> <code>'/'</code></p>
+</li>
+<li>
+<p>El <strong>middleware</strong> crea las <em>variables locales</em> que necesita la <strong>vista</strong> que va a <strong>renderizar</strong></p>
+</li>
+<li>
+<p>Cambio <strong>index.ejs</strong> de nombre a <strong>home.ejs</strong> y lo modifico para mostrar un listado de los <strong>productos</strong></p>
+</li>
+</ol>
+</li>
+<li>
+<h3 id="manejo-de-sesion">Manejo de sesion</h3>
+<p>Instalo <a href="https://github.com/expressjs/session">express-session</a> y <a href="https://github.com/jdesboeufs/connect-mongo">connect-mongo</a> usando <a href="https://www.npmjs.com/package/express-session"><code>npm i express-session</code></a> y <a href="https://www.npmjs.com/package/connect-mongo"><code>npm i connect-mongo</code></a></p>
+<p>Creo <strong>sessionManager.js</strong> en el que <em>declaro</em> y <em>exporto</em> 3 funciones</p>
+<ol>
+<li>
+<p><code>sessionMiddleware</code> encargado de <strong>generar</strong> la <em>cookie</em> con la informacion de la <strong>sesion</strong> y guardarla en la <strong>MongoDB</strong></p>
+<p>Creado <em>llamando</em> a la funcion <code>session</code> de <code>express-session</code> y en cuyo parametro <strong>store</strong> <em>llamamos</em> a la funcion <code>MongoStore.create()</code></p>
+</li>
+<li>
+<p><code>setSessionLocalsMiddleware</code> encargado de colocar la informacion de la <strong>session</strong> en las variables <strong>locales</strong> para que las <em>vistas</em> puedan acceder a la informacion</p>
+</li>
+<li>
+<p><code>isLogged</code> encargado de <strong>autentificar</strong> si estamos <em>logueados</em> o no, se usara en los <em>endpoints</em> de los <strong>productos</strong></p>
+</li>
+<li>
+<p>Uso los <strong>middlewares</strong> de los puntos 1 y 2 en <strong>app.js</strong> justo antes del <em>routing</em></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#E1E4E8">app.</span><span style="color:#B392F0">use</span><span style="color:#E1E4E8">(sessionMiddleware, setSessionLocalsMiddleware)</span></span></code></pre>
+</li>
+<li>
+<p>En <strong>homeController.js</strong> ahora solo creo la <em>variable local</em> <strong>products</strong> si estoy logueado y los productos que busco en la MongoDB son los del <strong>usuario</strong> logueado</p>
+</li>
+<li>
+<p>En <strong>home.ejs</strong> el renderizado de la lista de <strong>productos</strong> es condicional a si existe un <code>session.userId</code> en la <em>sesion</em> actual</p>
+</li>
+</ol>
+</li>
+<li>
+<h3 id="implementacion-del-login-y-logout">Implementacion del login y logout</h3>
+<ol>
+<li>
+<p>Defino la rutas <strong>GET</strong> y <strong>POST</strong> <em>‘/login’</em> y <strong>ALL</strong> <em>‘/logout’</em> en <strong>app.js</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#E1E4E8">app.</span><span style="color:#B392F0">get</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'/login'</span><span style="color:#E1E4E8">, getLogin)</span></span>
+<span class="line"><span style="color:#E1E4E8">app.</span><span style="color:#B392F0">post</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'/login'</span><span style="color:#E1E4E8">, postLogin)</span></span>
+<span class="line"><span style="color:#E1E4E8">app.</span><span style="color:#B392F0">all</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'/logout'</span><span style="color:#E1E4E8">, logoutController)</span></span></code></pre>
+</li>
+<li>
+<p>Creo <code>getLogin</code> y <code>postLogin</code> en <strong>loginController.js</strong></p>
+<p>2.1 Creo <code>setupLoginLocals</code> en <strong>config.js</strong> para ahorrarme repetir codigo a lo largo de este documento</p>
+<p>2.2 En <code>getLogin</code> si hay usuario logueado, <strong>redirecciono</strong> a la <em>home</em> y retorno, si no, defino las variables locales renderizo la vista <strong>login.ejs</strong></p>
+<p>2.2 En <code>postLogin</code>, en este orden</p>
+<ol>
+<li>
+<p>Recupero los <em>email</em> y <em>password</em> del <strong>formulario</strong></p>
+</li>
+<li>
+<p>Normalizo el <em>email</em> <code>email.toLowerCase().trim()</code></p>
+</li>
+<li>
+<p>Valido el <code>req.body</code> usando la funcion <code>parse</code> de <a href="https://www.npmjs.com/package/zod">zod</a> en el <code>loginSchema</code> que he creado usando <em>zod</em> en <strong>validatorSchemas.js</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#E1E4E8">loginSchema.</span><span style="color:#B392F0">parse</span><span style="color:#E1E4E8">(req.body)</span></span></code></pre>
+</li>
+<li>
+<p>Busco un usuario en la <strong>MongoDB</strong> con el <em>email</em> recuperado</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> user</span><span style="color:#F97583"> =</span><span style="color:#F97583"> await</span><span style="color:#E1E4E8"> User.</span><span style="color:#B392F0">findOne</span><span style="color:#E1E4E8">({ email: normalizedEmail })</span></span></code></pre>
+</li>
+<li>
+<p>Si no hay usuario, creo las <em>variable locales</em> de <strong>login.ejs</strong>, con el <strong>error</strong> incluido, y renderizo de nuevo <strong>login.ejs</strong></p>
+</li>
+<li>
+<p>Si hay usuario, compruebo si la <em>password</em> recuperada coincide con la del <strong>usuario</strong> encontrado</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> passwordMatch</span><span style="color:#F97583"> =</span><span style="color:#F97583"> await</span><span style="color:#E1E4E8"> user.</span><span style="color:#B392F0">comparePassword</span><span style="color:#E1E4E8">(password)</span></span></code></pre>
+</li>
+<li>
+<p>Si no coincide, hago lo <strong>mismo</strong> que en el punto <strong>4</strong></p>
+</li>
+<li>
+<p>Si coincide, creo la informacion de la <strong>sesion</strong> y redirecciono a la <strong>home</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#E1E4E8">req.session.userId </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> user._id</span></span>
+<span class="line"><span style="color:#E1E4E8">req.session.email </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> user.email</span></span>
+<span class="line"><span style="color:#E1E4E8">res.</span><span style="color:#B392F0">redirect</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'/'</span><span style="color:#E1E4E8">)</span></span></code></pre>
+</li>
+<li>
+<p>Manejo errores provinientes de la <em>validacion</em> con <strong>zod</strong> usando la funcion <code>handleLoginValidationError</code> que he creado en <strong>zodErrorHandlers.js</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#F97583">if</span><span style="color:#E1E4E8"> (error </span><span style="color:#F97583">instanceof</span><span style="color:#B392F0"> z</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">ZodError</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#B392F0">  handleLoginValidationError</span><span style="color:#E1E4E8">(title, error, res, req.body.email)</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+</li>
+<li>
+<p>Si ocurre algun otro error, llamo a <code>next(error)</code></p>
+</li>
+</ol>
+</li>
+<li>
+<p>Creo la vista <strong>login.ejs</strong>, <em>formulario</em> sencillo que muestra un <strong>error</strong> si fallamos en el login, y tiene un link a la <strong>home</strong>, el boton <code>submit</code> hace una peticion <strong>POST</strong> a <code>/login</code></p>
+</li>
+<li>
+<p>Creo <code>index</code> en <strong>logoutController.js</strong> que usa <a href="https://expressjs.com/en/resources/middleware/session.html">regenerate</a> de <code>express-session</code>, borra la info de la sesion actual y crea una nueva <strong>sin usuario logueado</strong> y nos redirecciona a la <em>home</em></p>
+</li>
+<li>
+<p>En <strong>header.ejs</strong> el <code>href</code> del link que hay de forma condicional no lleva a <em>‘/logout’, ‘/login’ o ’/’</em> dependiendo si estoy renderizando <strong>home.ejs</strong> o <strong>login.ejs</strong> y si hay o no <em>usuario logueado</em></p>
+</li>
+</ol>
+</li>
+<li>
+<h3 id="creacion-borrado-y-editado-de-productos">Creacion, borrado y editado de productos</h3>
+<ol>
+<li>
+<p>Creo los <strong>middlewares</strong> en <strong>productsController.js</strong> para manejar las rutas de <em>product</em></p>
+<ol>
+<li>
+<p>En <code>getCreateProduct</code> defino las <strong>locals</strong> que necesito para renderizar <strong>create-product.ejs</strong></p>
+</li>
+<li>
+<p>En <code>postNewProduct</code> en este orden</p>
+<ol>
+<li>
+<p>Guardo en <em>variables</em> los datos del <em>formulario</em> usando el <strong>req.body</strong></p>
+</li>
+<li>
+<p>Guardo la variable <em>userId</em> usando el <strong>req.session.userId</strong></p>
+</li>
+<li>
+<p>Valido el <code>req.body</code> usando la funcion <code>parse</code> de <a href="https://www.npmjs.com/package/zod">zod</a> en el <code>productSchema</code> que he creado usando <em>zod</em> en <strong>validatorSchemas.js</strong></p>
+</li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#E1E4E8">productSchema.</span><span style="color:#B392F0">parse</span><span style="color:#E1E4E8">(req.body)</span></span></code></pre>
+<ol start="4">
+<li>
+<p>Guardo en la variable <em>newProduct</em> un <code>new Product</code> con los datos obtenidos en el paso <code>1.</code> y usando <code>await newProduct.save()</code> lo guardo en la <strong>MongoDB</strong></p>
+</li>
+<li>
+<p>Redireciono a <code>'/'</code></p>
+</li>
+<li>
+<p>Manejo errores provinientes de la <em>validacion</em> con <strong>zod</strong> usando la funcion <code>handleProductValidationError</code> que he creado en <strong>zodErrorHandlers.js</strong></p>
+</li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#F97583">if</span><span style="color:#E1E4E8"> (error </span><span style="color:#F97583">instanceof</span><span style="color:#B392F0"> z</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">ZodError</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#B392F0">  handleProductValidationError</span><span style="color:#E1E4E8">(</span></span>
+<span class="line"><span style="color:#79B8FF">    CREATE_PRODUCT_TITLE</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">    error,</span></span>
+<span class="line"><span style="color:#E1E4E8">    res,</span></span>
+<span class="line"><span style="color:#E1E4E8">    name,</span></span>
+<span class="line"><span style="color:#E1E4E8">    price,</span></span>
+<span class="line"><span style="color:#E1E4E8">    image,</span></span>
+<span class="line"><span style="color:#E1E4E8">    tags</span></span>
+<span class="line"><span style="color:#E1E4E8">  )</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<ol start="7">
+<li>Llamo a <code>next(error)</code> en caso de otro tipo de error</li>
+</ol>
+</li>
+<li>
+<p>En <code>deleteProduct</code> en este orden</p>
+<ol>
+<li>
+<p>Guardo la variable <em>productId</em> leyendo los parametros de ruta usando <strong>req.params.id</strong></p>
+</li>
+<li>
+<p>Guardo el <em>userId</em> como en <code>postNewProduct</code>, leyendo la sesion <strong>req.session.userId</strong></p>
+</li>
+<li>
+<p>Busco con un <em>producto</em> con el <em>productId</em> en la <strong>MongoBD</strong> usando <code>await Product.findById(productId)</code></p>
+</li>
+<li>
+<p>Si no existe un <em>producto</em> en la <strong>MongoDB</strong> con ese _<em>id</em> muestro un warn en consola, llamo a <code>next(createError(404))</code> <a href="https://github.com/jshttp/http-errors">createError info</a> y salgo de la funcion</p>
+</li>
+<li>
+<p>Si el <em>userId</em> obetindo de la sesion en el paso <code>2.</code> no coincide con el <code>product.owner.toString()</code> quiere decir que el usuario que esta intentando borrar el producto, no es el dueño del producto, asi que lanzamos <code>next(createError(401))</code> y salgo de la funcion</p>
+</li>
+<li>
+<p>En caso contrario, elimino el <em>producto</em> de la <strong>MongoDB</strong> usando <code>await Product.deleteOne({ _id: productId })</code></p>
+</li>
+<li>
+<p>Redireciono a <code>'/'</code></p>
+</li>
+<li>
+<p>Llamo a <code>next(error)</code> en caso de cualquier otro error</p>
+</li>
+</ol>
+</li>
+<li>
+<p>En <code>getUpdateProduct</code> en este orden</p>
+<ol>
+<li>
+<p>Leo de los parametros de ruta <code>req.params</code> el <em>id</em> del producto y lo guardo en la varible <code>id</code></p>
+</li>
+<li>
+<p>Leo de la sesion <code>req.session.userId</code> el <em>id</em> del usuario y lo guardo en la variable <code>userId</code></p>
+</li>
+<li>
+<p>Busco el producto con el <code>id</code> y guardo su informacion en <em>variables</em></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#E1E4E8"> { </span><span style="color:#79B8FF">name</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">price</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">image</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">tags</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">owner</span><span style="color:#E1E4E8"> } </span><span style="color:#F97583">=</span><span style="color:#F97583"> await</span><span style="color:#E1E4E8"> Product.</span><span style="color:#B392F0">findById</span><span style="color:#E1E4E8">(</span></span>
+<span class="line"><span style="color:#E1E4E8">  id</span></span>
+<span class="line"><span style="color:#E1E4E8">)</span></span></code></pre>
+</li>
+<li>
+<p>Compruebo si existe un producto en la <em>base de datos</em>, si no lanzo <code>next(createError(404))</code></p>
+</li>
+<li>
+<p>Compruebo si el <code>userId</code> y el <code>id</code> coinciden, si no lanzo <code>next(createError(401))</code></p>
+</li>
+<li>
+<p>Preparo las <code>res.locals</code> usando la funcion <code>setLocals</code> que he creado en <strong>config.js</strong> para que el formulario salga directamente con la info del producto</p>
+</li>
+<li>
+<p>Renderizo <strong>create-product.ejs</strong> si no ha habido fallo y si no, llamo a <code>next(error)</code></p>
+</li>
+</ol>
+</li>
+<li>
+<p>En <code>postUpdateProduct</code> en este orden</p>
+<ol>
+<li>
+<p>Guardo en variables los datos del <em>body</em> de la <em>request</em> <code>req.body</code></p>
+</li>
+<li>
+<p>Guardo en la variable <em>id</em> el id del producto obetindo de los parametros de ruta <code>req.params</code></p>
+</li>
+<li>
+<p>Guardo en la variable <em>userId</em> el id del usuario logueado usando <code>req.session.userId</code></p>
+</li>
+<li>
+<p>Guardo en la variable <em>producto</em> el resultado de <code>await Product.findById(id)</code></p>
+</li>
+<li>
+<p>Checkeo si el <em>producto</em> existe, si no lanzo error <code>next(createError(404))</code></p>
+</li>
+<li>
+<p>Checkeo si el <em>id</em> del usuario coincide con el <em>owner</em> del producto, si no, lanzo error <code>next(createError(401))</code></p>
+</li>
+<li>
+<p>(Ahora, validaria con zod, igual que en login, register y createProduct, pero al final, para validar, he creado un <em>middleware</em> y lo paso por la ruta despues del middleware de sesion y antes del controller)</p>
+</li>
+<li>
+<p>Guardo en la variable <em>updatedProduct</em> el resultado de <code>await Product.findByIdAndUpdate(id, &#x3C;productData>)</code></p>
+</li>
+<li>
+<p>Redirecciono a la home si todo va bien</p>
+</li>
+<li>
+<p>En caso de error, si el error es por duplicacion de <em>name</em> renderizo otra vez <strong>create-product.ejs</strong> con las locals y un error</p>
+</li>
+<li>
+<p>Si el error es cualquier otro, llamo uso <code>next(error)</code></p>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>
+<p>Creo las rutas relacionadas con <em>product</em> en <strong>app.js</strong>, usando primero el <em>middleware</em> <strong>isLogged</strong> para comprobar <em>autenticacion</em> y seguido, los <em>middlewares</em> creados</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#E1E4E8">app.</span><span style="color:#B392F0">get</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'/create-product'</span><span style="color:#E1E4E8">, isLogged, getCreateProduct)</span></span>
+<span class="line"><span style="color:#E1E4E8">app.</span><span style="color:#B392F0">post</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'/create-product'</span><span style="color:#E1E4E8">, isLogged, postNewProduct)</span></span>
+<span class="line"><span style="color:#E1E4E8">app.</span><span style="color:#B392F0">get</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'/delete-product/:id'</span><span style="color:#E1E4E8">, isLogged, deleteProduct)</span></span></code></pre>
+</li>
+<li>
+<p>Creo <em>vista</em> <strong>create-product.ejs</strong> para crear producto, en todos los checkboxes para los <strong>tags</strong> uso el mismo <code>name="tag"</code> e incluyo <code>value=&#x3C;tagName></code> para poder acceder a los tags facilmente en el servidor</p>
+</li>
+<li>
+<p>Creo dos enlaces, <code>&#x3C;a></code> uno en el <strong>header.ejs</strong> que hace una peticion <strong>GET</strong> a <code>/create-product</code> y otro en <strong>home.ejs</strong> que hace una peticion <strong>GET</strong> a <code>/delete-product/&#x3C;productId></code> para eliminar producto</p>
+</li>
+<li>
+<p>El boton <code>submit</code> de la vista <strong>create-product.ejs</strong> hace una peticion <strong>POST</strong> a <code>/create-product</code></p>
+</li>
+</ol>
+</li>
+</ul>
+<h3 id="zod-schemas-y-middlewares">Zod schemas y middlewares</h3>
+<p>En vez de usar la funcion <em>parse</em> de <em>zod</em> directamente en los controladores, creo en el archivo <strong>validatorSchemas.js</strong> la funcion de orden superior <code>validatorMiddleware = ({...}) => (req, res, next) => {}</code> en la que uso <em>parse</em> y manejo el error con el <em>errorHandler</em> que es una de las funciones de <strong>zodErrorHandlers.js</strong>, esta funcion me va a servir para crear los <em>middleware de validacion</em> para las peticiones <strong>POST</strong> en <code>/login</code> y <code>/register</code></p>
+<p>Tambien creo <code>validatorProductMiddleware = ({...}) => (req, res, next) => {}</code> en la que uso <em>parse</em> y en el manejo de errores el <em>errorHandler</em> recibe distintos atributos al <em>errorHandler</em> <code>validatorMiddleware</code> esta esta pensada para crear los <em>middleware de validacion</em> para las peticiones <strong>POST</strong> en <code>/create-product</code> y <code>/updateProduct/:id</code></p>
+<p>Como es de las primeras veces que uso este tipo de funciones, para <code>/login</code> y <code>/register</code> la uso directamente en <strong>app.js</strong>
+de un modo parecido en ambas rutas</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#E1E4E8">app.</span><span style="color:#B392F0">post</span><span style="color:#E1E4E8">(</span></span>
+<span class="line"><span style="color:#9ECBFF">  '/login'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#B392F0">  validatorMiddleware</span><span style="color:#E1E4E8">({</span></span>
+<span class="line"><span style="color:#E1E4E8">    title: </span><span style="color:#79B8FF">LOGIN_TITLE</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">    schema: loginSchema,</span></span>
+<span class="line"><span style="color:#E1E4E8">    errorHandler: handleLoginValidationError</span></span>
+<span class="line"><span style="color:#E1E4E8">  }),</span></span>
+<span class="line"><span style="color:#E1E4E8">  postLogin</span></span>
+<span class="line"><span style="color:#E1E4E8">)</span></span></code></pre>
+<p>En el caso de las rutas <code>/create-product</code> y <code>/updateProduct/:id</code> opto por en <strong>validatorSchemas.js</strong> crear los middlewares especificos de ambas rutas, ambos muy parecidos</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> const</span><span style="color:#79B8FF"> createProductValidatorMiddleware</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> validatorProductMiddleware</span><span style="color:#E1E4E8">({</span></span>
+<span class="line"><span style="color:#E1E4E8">  title: </span><span style="color:#79B8FF">CREATE_PRODUCT_TITLE</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">  schema: productSchema,</span></span>
+<span class="line"><span style="color:#E1E4E8">  errorHandler: handleProductValidationError</span></span>
+<span class="line"><span style="color:#E1E4E8">})</span></span></code></pre>
+<p>Y en <strong>app.js</strong> usar estos middlewares directamente</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#E1E4E8">app.</span><span style="color:#B392F0">post</span><span style="color:#E1E4E8">(</span></span>
+<span class="line"><span style="color:#9ECBFF">  '/create-product'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">  isLogged,</span></span>
+<span class="line"><span style="color:#E1E4E8">  createProductValidatorMiddleware,</span></span>
+<span class="line"><span style="color:#E1E4E8">  postCreateProduct</span></span>
+<span class="line"><span style="color:#E1E4E8">)</span></span></code></pre>
+<p>Para dejar huella de como lo hacia al pricipio, he comentado en los controllers las partes de la validacion en vez de borrarlas</p>
+<h3 id="register">Register</h3>
+<ol>
+<li>
+<p>Defino la rutas <strong>GET</strong> y <strong>POST</strong> <em>‘/register’</em> en <strong>app.js</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#E1E4E8">app.</span><span style="color:#B392F0">get</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'/register'</span><span style="color:#E1E4E8">, getRegister)</span></span>
+<span class="line"><span style="color:#E1E4E8">app.</span><span style="color:#B392F0">post</span><span style="color:#E1E4E8">(</span></span>
+<span class="line"><span style="color:#9ECBFF">  '/register'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#B392F0">  validatorMiddleware</span><span style="color:#E1E4E8">({</span></span>
+<span class="line"><span style="color:#E1E4E8">    title: </span><span style="color:#79B8FF">REGISTER_TITLE</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">    schema: loginSchema,</span></span>
+<span class="line"><span style="color:#E1E4E8">    errorHandler: handleLoginValidationError</span></span>
+<span class="line"><span style="color:#E1E4E8">  }),</span></span>
+<span class="line"><span style="color:#E1E4E8">  postRegister</span></span>
+<span class="line"><span style="color:#E1E4E8">)</span></span></code></pre>
+</li>
+<li>
+<p>Creo <code>getRegister</code> y <code>postRegister</code> en <strong>registerController.js</strong></p>
+<ol>
+<li>
+<p>En <code>getRegister</code> si hay usuario <em>logueado</em> redirecciono a <code>'/'</code>, si no, hago set up de las <em>locals</em> y renderizo <code>login-register.ejs</code></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> const</span><span style="color:#B392F0"> getRegister</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">req</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">res</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">  if</span><span style="color:#E1E4E8"> (req.session.userId) </span><span style="color:#F97583">return</span><span style="color:#E1E4E8"> res.</span><span style="color:#B392F0">redirect</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'/'</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#B392F0">  setLocals</span><span style="color:#E1E4E8">(res, { title })</span></span>
+<span class="line"><span style="color:#E1E4E8">  res.</span><span style="color:#B392F0">render</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'login-register'</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+</li>
+<li>
+<p>En <code>postRegister</code> en este orden</p>
+<ol>
+<li>
+<p>Recupero el <em>email</em> y la <em>password</em> del <em>req.body</em></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#E1E4E8"> { </span><span style="color:#79B8FF">email</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">password</span><span style="color:#E1E4E8"> } </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> req.body</span></span></code></pre>
+</li>
+<li>
+<p>Normalizo el <em>email</em></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> normalizedEmail</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> email.</span><span style="color:#B392F0">toLowerCase</span><span style="color:#E1E4E8">().</span><span style="color:#B392F0">trim</span><span style="color:#E1E4E8">()</span></span></code></pre>
+</li>
+<li>
+<p>Compruebo si hay ya un usuario en la <em>MongoDB</em> con ese <em>email</em> y si lo hay manejo el error</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> user</span><span style="color:#F97583"> =</span><span style="color:#F97583"> await</span><span style="color:#E1E4E8"> User.</span><span style="color:#B392F0">findOne</span><span style="color:#E1E4E8">({ email: normalizedEmail })</span></span>
+<span class="line"><span style="color:#F97583">if</span><span style="color:#E1E4E8"> (user) {</span></span>
+<span class="line"><span style="color:#B392F0">  setLocals</span><span style="color:#E1E4E8">(res, {</span></span>
+<span class="line"><span style="color:#E1E4E8">    title,</span></span>
+<span class="line"><span style="color:#E1E4E8">    email,</span></span>
+<span class="line"><span style="color:#E1E4E8">    error: </span><span style="color:#9ECBFF">'   ERROR: This email is already REGISTERED'</span></span>
+<span class="line"><span style="color:#E1E4E8">  })</span></span>
+<span class="line"><span style="color:#E1E4E8">  res.</span><span style="color:#B392F0">render</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'login-register'</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#F97583">  return</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+</li>
+<li>
+<p>Creo el <em>user</em> que voy a <em>insertar</em> en la <em>MongoDB</em>, usando el metodo <code>userSchema.statics.hashPassword</code> para que en la base de datos la <em>password</em> se guarde <em>encriptada</em></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> newUser</span><span style="color:#F97583"> =</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> User</span><span style="color:#E1E4E8">({</span></span>
+<span class="line"><span style="color:#E1E4E8">  email: normalizedEmail,</span></span>
+<span class="line"><span style="color:#E1E4E8">  password: </span><span style="color:#F97583">await</span><span style="color:#E1E4E8"> User.</span><span style="color:#B392F0">hashPassword</span><span style="color:#E1E4E8">(password)</span></span>
+<span class="line"><span style="color:#E1E4E8">})</span></span></code></pre>
+</li>
+<li>
+<p>Guardo el nuevo usuario en la <em>MongoDB</em></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> savedUser</span><span style="color:#F97583"> =</span><span style="color:#F97583"> await</span><span style="color:#E1E4E8"> newUser.</span><span style="color:#B392F0">save</span><span style="color:#E1E4E8">()</span></span></code></pre>
+</li>
+<li>
+<p>Hago que al hacer el registro de usuario, se haga <em>login</em> y redirecciono a <code>'/'</code></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#E1E4E8">req.session.userId </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> savedUser._id</span></span>
+<span class="line"><span style="color:#E1E4E8">req.session.email </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> savedUser.email</span></span>
+<span class="line"><span style="color:#E1E4E8">res.</span><span style="color:#B392F0">redirect</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'/'</span><span style="color:#E1E4E8">)</span></span></code></pre>
+</li>
+<li>
+<p>Manejo posibles errores no manejados llamando a <code>next(error)</code></p>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="filtros-y-paginacion">Filtros y paginacion</h3>
+<p>No voy a poder realizar una descripcion objetiva exacta de como he llegado al resultado final, ya que al principio hice la paginacion, y mientras hacia el sorting, me di cuenta de cosas que tenia que cambiar en la paginacion y lo mismo con los filtros, el caso es que ha ido evolucionando el codigo.</p>
+<h4 id="homecontrollerjs">homeController.js</h4>
+<p>Si no hay usuario logueado, hace render de <strong>home.ejs</strong>, que si no tiene usuario es una pagina muy simple que usa pocas <em>locals</em></p>
+<p>Si hay usuario loguado, en este orden</p>
+<ol>
+<li>
+<p>Inicio las <em>locals</em> del <code>href</code> del boton <em>Logout</em> y del <code>children</code> (el texto del boton)</p>
+</li>
+<li>
+<p>Creo la variable <code>owner</code> con el valor del <code>req.session.userId</code></p>
+</li>
+<li>
+<p>Creo las variables <code>skip, limit, sort, name, price, tag, priceMin, priceMax, priceExact</code> con los valores obtenidos de <code>req.query</code> (query params)</p>
+</li>
+<li>
+<p>Inicio la variable <code>const options = {}</code> que es el objeto que le voy a pasar a <em>mongoose</em> para <strong>paginar</strong> y <strong>ordenar</strong></p>
+</li>
+<li>
+<p>Inicio las <em>locals</em> de los <code>href</code> de los botones que manejan la navegacion de <strong>ordenar</strong> (nombre y precio, ascendente y descendente), <strong>desordenar</strong> y <strong>resetear</strong> los <em>filtros</em> (nombre, precioMin/precioMax, precioExact, tag), para ello uso la <em>funcion</em> <strong>normalizeURL</strong> que he creado en <strong>config.js</strong></p>
+</li>
+<li>
+<p>Para que no haya cosas raras en la paginacion, si en la <em>URL</em>, solo existen <strong>skip</strong> o <strong>limit</strong>, una de las dos de forma obligatoria (son los query params encargados de la paginacion), en el caso de que solo haya uno, redirecciono a una <em>URL</em> que <strong>elimina</strong> ambos, devolviendo la misma <em>URL</em> pero sin <strong>skip</strong> ni <strong>limit</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#F97583">if</span><span style="color:#E1E4E8"> ((</span><span style="color:#F97583">!</span><span style="color:#E1E4E8">limit </span><span style="color:#F97583">&#x26;&#x26;</span><span style="color:#E1E4E8"> skip) </span><span style="color:#F97583">||</span><span style="color:#E1E4E8"> (limit </span><span style="color:#F97583">&#x26;&#x26;</span><span style="color:#F97583"> !</span><span style="color:#E1E4E8">skip)) {</span></span>
+<span class="line"><span style="color:#E1E4E8">  res.</span><span style="color:#B392F0">redirect</span><span style="color:#E1E4E8">(</span></span>
+<span class="line"><span style="color:#B392F0">    normalizeURL</span><span style="color:#E1E4E8">({ </span><span style="color:#F97583">...</span><span style="color:#E1E4E8">currentParams, skip: </span><span style="color:#79B8FF">undefined</span><span style="color:#E1E4E8">, limit: </span><span style="color:#79B8FF">undefined</span><span style="color:#E1E4E8"> })</span></span>
+<span class="line"><span style="color:#E1E4E8">  )</span></span>
+<span class="line"><span style="color:#F97583">  return</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+</li>
+<li>
+<p>Si tengo <strong>skip</strong> y <strong>limit</strong> entonces hago los calculos necesarios para crear los <code>href</code> de los <em>botones</em> que manejan la <strong>paginacion</strong> (nextPage, previousPage y showAll)</p>
+</li>
+<li>
+<p>Tanto si tengo <strong>skip</strong> y <strong>limit</strong> como si no, inicio la <em>locals</em> del <code>href</code> del boton <code>show 2 by 2</code> que sirve para ver la lista paginada</p>
+</li>
+<li>
+<p>Inicio la variable <code>const filters = { owner }</code></p>
+</li>
+<li>
+<p>Si tengo <strong>name</strong> meto en <em>filters.name</em> <code>new RegExp()</code> e inicio la <code>res.locals.name = name</code></p>
+</li>
+<li>
+<p>Si tengo <strong>tag</strong> meto en <code>normalizedTag</code> el resultado de usar <code>validateQueryTag(tag)</code> una <em>funcion</em> que he creado en <strong>config.js</strong> que valida y normaliza el tag y en el caso de no seguir un patron <code>regexp</code> concreto lanza un error especifico</p>
+</li>
+<li>
+<p>Si no ha habido error, meto en <em>filters.tag</em> <code>normalizedTag</code> e inicio <code>res.locals.tag = normalizedTag</code></p>
+</li>
+<li>
+<p>Si tengo <strong>sort</strong> intento <code>res.locals.sort = validateQuerySort(sort)</code> que es una <em>funcion</em> para validar <em>sort</em> y lanzar un error especifico en el caso de no seguir un patron <code>regexp</code> concreto</p>
+</li>
+<li>
+<p>Si no ha sucedido error, meto en <em>options.sort</em> <code>normalizeSortMongo(sort)</code> una <em>funcion</em> para normalizar <strong>sort</strong> a una forma que <code>mongoose</code> entienda para poder ordenar</p>
+</li>
+<li>
+<p>Para el <strong>price</strong>, como he querido al principio no complicarme, use el <em>query param</em> <strong>price</strong> que proponia Javier, uno que siguiese el patron numero-numero y cree toda la estructura para que funcionase el filtro con ese query param, pero luego a la hora de hacer las vistas, si quiero que el usuario tenga las opciones de usar el filtro que he creado (usar solo mayor que, o solo menor que, o ambos, o usar precio exacto) solo se me ocurria teniendo mas query params, asi que al final, ha quedado una estructura muy compleja, de forma innecesaria, pero que me ha ayudado a aprender un monton!! Por cierto Javier si has llegado hasta leer esto GRACIAS MIL GRACIAS</p>
+</li>
+<li>
+<p>La idea detras de lo que voy a explicar es que el usuario tiene forma a traves de un formulario de poder poner un precio minimo o maximo, o ambos, y a traves de otro poner un precio exacto, he intentado pensar en todos los detalles, desactivar un formulario si el otro esta en uso para que no entre en conflito, asi como el <strong>price</strong> solo se puede poner directamente en la url, pero si lo intentas poner cuando hay alguno de los otros activo, elimina los otros (relativos al precio) y usa el <strong>price</strong>, asi como si existe <strong>price</strong> en la url y quieres usar el formulario del precio exacto o del min/max, lo que hace es no deolver el <strong>price</strong> quedandose solo con el que haya enviado y los otros que hubiese que no sean del precio.</p>
+</li>
+<li>
+<p>Ademas de que he pensado en todos los casos de error que se me han ocurrido tanto en formularios como en los query params directamente en la url manejando todos de forma especifica para que te manden mensajes de error en un sitio u otro de la pantalla, o que eliminen query params.</p>
+</li>
+<li>
+<p>Haya vamos con la explicacion del codigo relativo a esto</p>
+</li>
+<li>
+<p>Primera comprobacion, si en los <em>query params</em> tengo <strong>price</strong> y ademas tengo uno de los siguientes <strong>priceMin</strong>, <strong>priceMax</strong> o <strong>priceExact</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#E1E4E8">res.</span><span style="color:#B392F0">redirect</span><span style="color:#E1E4E8">(</span></span>
+<span class="line"><span style="color:#B392F0">  normalizeURL</span><span style="color:#E1E4E8">({</span></span>
+<span class="line"><span style="color:#F97583">    ...</span><span style="color:#E1E4E8">currentParams,</span></span>
+<span class="line"><span style="color:#E1E4E8">    priceMin: </span><span style="color:#9ECBFF">''</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">    priceMax: </span><span style="color:#9ECBFF">''</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">    priceExact: </span><span style="color:#9ECBFF">''</span></span>
+<span class="line"><span style="color:#E1E4E8">  })</span></span>
+<span class="line"><span style="color:#E1E4E8">)</span></span></code></pre>
+</li>
+<li>
+<p>Siguiente, si tengo <strong>price</strong>, uso <code>validateQueryPrice(price)</code> una funcion creada en <strong>config.js</strong> que valida price usando una <code>regexp</code> que si no pasa lanza un error especifico, inicio las <em>res.locals.price</em> y <em>res.locals.priceView</em></p>
+</li>
+<li>
+<p>Meto en <em>filters.price</em> <code>normalizePriceMongo(price)</code> una <em>funcion</em> para normalizar <strong>price</strong> a una forma que <code>mongoose</code> entienda para poder <em>filtrar</em></p>
+</li>
+<li>
+<p>Si no tengo <strong>price</strong> y tengo alguno de los siguientes <strong>priceMin</strong>, <strong>priceMax</strong> o <strong>priceExact</strong>, inicio las <em>res.locals.priceMin</em>, <em>res.locals.priceMax</em> y <em>res.locals.priceExact</em></p>
+</li>
+<li>
+<p>Creo <code>const validatedPrice = normalizedPrice({ priceMin, priceMax, priceExact })</code> usando la <em>funcion</em> <code>normalizedPrice</code> que creo en <strong>config.js</strong> y que primero valida el unico error posible a traves del formulario que seria poner un valor negativo y lanza error especifico, luego valida si ha sido una entrada no numerica (solo se podria tocando en la url directamente) y lanza un error distinto al anterior, y si pasa las validaciones, devuelve una cadena de texto que mi funcion <code>normalizePriceMongo</code> entiende</p>
+</li>
+<li>
+<p>Si pasa la validacion, meto en <em>filters.price</em> el resultado de llamar a <code>normalizePriceMongo(validatedPrice)</code> para crear el <strong>filtro</strong> que usa mi funcion de <em>mongoose</em></p>
+</li>
+<li>
+<p>FINALMENTE (aparentemente) incio las <em>locals</em> y renderizo <strong>home.ejs</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#E1E4E8">res.locals.productsLength </span><span style="color:#F97583">=</span><span style="color:#F97583"> await</span><span style="color:#E1E4E8"> Product.</span><span style="color:#B392F0">countDocuments</span><span style="color:#E1E4E8">(filters)</span></span>
+<span class="line"><span style="color:#E1E4E8">res.locals.products </span><span style="color:#F97583">=</span><span style="color:#F97583"> await</span><span style="color:#E1E4E8"> Product.</span><span style="color:#B392F0">list</span><span style="color:#E1E4E8">({ filters, options })</span></span>
+<span class="line"><span style="color:#E1E4E8">res.</span><span style="color:#B392F0">render</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'home'</span><span style="color:#E1E4E8">)</span></span></code></pre>
+</li>
+<li>
+<p>Manejo de errores, antes del ultimo refactor, esto eran 150 lineas de codigo LOL</p>
+</li>
+<li>
+<p>Justo despues del <code>catch(error)</code> uso la funcion <code>setLocals</code> creada en <strong>config.js</strong> para iniciar las <em>res.locals</em> comunes en todos los errores (este fue el refactor)</p>
+</li>
+<li>
+<p>Inicio arbol de <em>if</em> y <em>else if</em> para manejar los distintos casos de error, y poder lanzar un mensaje o incluso colocar el mensaje en un sitio distinto, dependiendo del error identificado</p>
+</li>
+<li>
+<p>Como he ido validando y lanzando yo los errores con <em>mensajes</em> especificos, puedo identificar los errores a traves del <code>error.message</code>, iniciar la <em>res.local.error</em> o <em>res.local.errorURL</em> y renderizar <strong>home.ejs</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#E1E4E8">} </span><span style="color:#F97583">else</span><span style="color:#F97583"> if</span><span style="color:#E1E4E8"> (error.message </span><span style="color:#F97583">===</span><span style="color:#9ECBFF"> '400 BAD REQUEST | ERROR in URL: TAG query param should match &#x3C;motor|lifestyle|mobile|work> pattern'</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#E1E4E8">res.locals.errorURL </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> 'IF YOU WANNA PLAY DIRECTLY WITH THE URL QUERY PARAMS</span><span style="color:#79B8FF">\n</span><span style="color:#9ECBFF">tag MUST MATCH ONE OF THE FOLLOWING PATTERNS</span><span style="color:#79B8FF">\n</span><span style="color:#9ECBFF">  motor | lifestyle | mobile | work'</span></span>
+<span class="line"><span style="color:#E1E4E8">res.</span><span style="color:#B392F0">render</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'home'</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#F97583">return</span></span></code></pre>
+</li>
+<li>
+<p>Para finalizar, las vistas son bastante simplonas, todo <strong>handMade</strong> usando <em>vanilla</em> <strong>HTML</strong> y <strong>CSS</strong>, podria haber hecho mucho mejor las cosas de frontend, pero este no era el modulo para ello.</p>
+</li>
+</ol>
