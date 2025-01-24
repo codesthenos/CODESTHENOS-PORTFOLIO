@@ -5,7 +5,9 @@ interface Props {
 const { title } = Astro.props
 ---
 
-<main class="grow">
-  <h1 class="text-4xl font-extrabold mb-3">{title}</h1>
+<main class="grow" style="view-transition-name: main">
+  <h1 class="text-4xl font-extrabold mb-3">
+    {title}
+  </h1>
   <slot />
 </main>
