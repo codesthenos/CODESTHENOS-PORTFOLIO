@@ -2,6 +2,7 @@
 import Layout from '@/layouts/Layout.astro'
 
 import Header from '@/components/index/Header.astro'
+import Main from '@/components/index/Main.astro'
 import BentoProjects from '@/components/index/BentoProjects.astro'
 import Footer from '@/components/index/Footer.astro'
 
@@ -12,10 +13,8 @@ const { name, label } = basics
 
 <Layout title={`Portafolio de ${name} - ${label}`}>
   <Header href="printableCV" text="VER CURRICULUM IMPRIMIBLE" />
-  <main class="p-8 m-auto w-full sm:p-16">
-    <h1 class="text-center text-4xl font-extrabold">PAGINA DE ENTRADA</h1>
-    <h2 class="text-center text-2xl font-semibold">TODO</h2>
+  <Main title="PROYECTOS">
     <BentoProjects />
-  </main>
-  <Footer />
+  </Main>
 </Layout>
+<Footer />

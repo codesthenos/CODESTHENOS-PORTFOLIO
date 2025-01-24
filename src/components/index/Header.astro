@@ -5,13 +5,14 @@ interface Props {
 }
 
 const { href, text } = Astro.props
+
+const BASE_URL = import.meta.env.BASE_URL
 ---
 
 <header>
   <a
-    class="block mx-auto mt-8 border border-gray-200 rounded-lg bg-gray-700 text-gray-200 py-1 px-2.5 w-fit transition-all duration-300 ease-linear hover:cursor-pointer hover:bg-gray-200 hover:text-gray-700 hover:border-gray-700"
-    href={href}
-    target="_blank"
+    class="block mx-auto my-8 border border-gray-200 rounded-lg bg-gray-700 text-gray-200 py-1 px-2.5 w-fit transition-all duration-300 ease-linear hover:cursor-pointer hover:bg-gray-200 hover:text-gray-700 hover:border-gray-700"
+    href={`${BASE_URL}${href}`}
   >
     {text}
   </a>
