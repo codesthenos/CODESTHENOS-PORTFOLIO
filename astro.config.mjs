@@ -1,15 +1,19 @@
 // @ts-check
 import { defineConfig } from 'astro/config'
+import rehypeExternalLinks from 'rehype-external-links';
 
 import tailwind from '@astrojs/tailwind'
 
-import markdoc from '@astrojs/markdoc';
-
 // https://astro.build/config
 export default defineConfig({
-  integrations: [tailwind(), markdoc()],
+  integrations: [tailwind()],
   base: '/CODESTHENOS-PORTFOLIO/',
   build: {
     assets: 'astro'
+  },
+  markdown: {
+    rehypePlugins: [
+      [rehypeExternalLinks, { target: '_blank', rel: ['noopener', 'noreferrer'] }]
+    ]
   }
 });
