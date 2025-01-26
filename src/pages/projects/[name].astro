@@ -21,11 +21,14 @@ const { project } = Astro.props
 const { name, github, url, image, tailwindClasses, path } = project.data
 
 const { Content } = await render(project)
+
+const BASE_URL = import.meta.env.BASE_URL
 ---
 
 <Layout title={name}>
   <Header href="" text="CASA" />
   <Main title={name}>
+    <img src={`${BASE_URL}${image}`} alt={name} class="max-w-64 aspect-auto" />
     <div
       class="max-w-screen-md mx-auto prose prose-invert prose-ol:list-none prose-li:p-0 prose-li:m-0 prose-ol:p-0 prose-ol:m-0 prose-code:bg-zinc-800 prose-code:text-zinc-200 prose-code:rounded-[4px] prose-code:p-0.5"
     >
