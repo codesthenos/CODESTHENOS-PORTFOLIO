@@ -5,6 +5,8 @@ url: https://codesthenos.github.io/FIRST-FULLSTACK-PROYECT/
 github: https://github.com/codesthenos/FIRST-FULLSTACK-PROYECT/
 tailwindClasses: md:row-span-1 md:col-span-4 md:bg-red-300 order-1
 path: primer-proyecto-fullstack
+nextPath: nodepop
+prevPath: ejemplo-de-portfolio
 ---
 
 ## BACKEND-API

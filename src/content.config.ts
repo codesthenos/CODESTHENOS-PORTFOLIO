@@ -7,7 +7,9 @@ const projects = defineCollection({
     url: z.string().url(),
     github: z.string().url(),
     tailwindClasses: z.string(),
-    path: z.string()
+    path: z.string(),
+    nextPath: z.string(),
+    prevPath: z.string()
   })
 })
 

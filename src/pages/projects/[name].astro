@@ -18,7 +18,8 @@ export const getStaticPaths = async () => {
 
 const { project } = Astro.props
 
-const { name, github, url, image, tailwindClasses, path } = project.data
+const { name, github, url, image, tailwindClasses, path, nextPath, prevPath } =
+  project.data
 
 const { Content } = await render(project)
 
@@ -27,6 +28,18 @@ const BASE_URL = import.meta.env.BASE_URL
 
 <Layout title={name}>
   <Header isHomePage={false} />
+  <nav class="mb-3">
+    <a
+      href={prevPath}
+      class="max-w-16 border border-gray-200 rounded-lg bg-gray-700 text-gray-200 py-1 px-2.5 w-fit transition-all duration-300 ease-linear hover:cursor-pointer hover:bg-gray-200 hover:text-gray-700 hover:border-gray-700"
+      >PREVIOUS PROJECT</a
+    >
+    <a
+      href={nextPath}
+      class="max-w-16 border border-gray-200 rounded-lg bg-gray-700 text-gray-200 py-1 px-2.5 w-fit transition-all duration-300 ease-linear hover:cursor-pointer hover:bg-gray-200 hover:text-gray-700 hover:border-gray-700"
+      >NEXT PROJECT</a
+    >
+  </nav>
   <Main title={name}>
     <img src={`${BASE_URL}${image}`} alt={name} class="max-w-64 aspect-auto" />
     <div
