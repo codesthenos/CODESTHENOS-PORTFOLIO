@@ -3,7 +3,7 @@ name: Nodepop
 image: projects/nodepop.png
 url: https://kc-web17-backend-avanzado-node.onrender.com/
 github: https://github.com/codesthenos/KC-WEB17-Backend-Avanzado-NODE-codesthenos
-tailwindClasses: md:row-span-1 md:col-span-3 md:bg-blue-300 order-2
+tailwindClasses: md:row-span-1 md:col-span-3 md:bg-blue-300 md:order-2 sm:order-4 sm:col-span-2
 path: nodepop
 nextPath: juego-stack-tower
 prevPath: primer-proyecto-fullstack
