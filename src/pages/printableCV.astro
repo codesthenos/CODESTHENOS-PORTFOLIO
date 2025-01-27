@@ -14,13 +14,13 @@ const { name, label } = basics
 ---
 
 <Layout title={`Portafolio imprimible de ${name} - ${label}`}>
-  <main class="p-8 m-auto w-full sm:p-16">
+  <main class="p-8 m-auto w-full sm:p-16 print:py-0">
     <Hero />
     <About />
     <Experience />
     <Education />
-    <Skills />
     <Projects />
+    <Skills />
   </main>
 </Layout>
 
