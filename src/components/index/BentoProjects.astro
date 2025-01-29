@@ -11,7 +11,7 @@ const projects = await getCollection('projects')
   {
     projects.map(({ data }) => (
       <div
-        class={`${data.tailwindClasses} group relative bg-contain md:hover:bg-gray-300 md:bg-no-repeat bg-center max-md:bg-gray-300 flex flex-col items-center justify-center p-4 rounded-lg shadow-md transition-all duration-700 ease-in-out`}
+        class={`${data.tailwindClasses} group relative bg-contain md:hover:bg-gray-300 md:bg-no-repeat bg-center max-md:bg-gray-300 flex flex-col items-center justify-center p-2 rounded-lg shadow-md transition-all duration-700 ease-in-out`}
       >
         <a href={`projects/${data.path}`}>
           <img
@@ -25,10 +25,10 @@ const projects = await getCollection('projects')
           <a href={`projects/${data.path}`}>{data.name}</a>
         </h2>
 
-        <div class="flex justify-between items-center w-full">
+        <div class="flex justify-center gap-4 items-center w-full">
           <a
             href={data.github}
-            class="mt-4 text-zinc-700 scale-150 z-10"
+            class="mt-4 text-zinc-700 z-10 hover:scale-125 transition-all duration-300"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -36,7 +36,7 @@ const projects = await getCollection('projects')
           </a>
           <a
             href={data.url}
-            class="mt-4 border-gray-200 rounded-lg bg-gray-700 text-gray-200 py-1 px-2.5 w-fit transition-all duration-300 ease-linear hover:cursor-pointer hover:bg-gray-200 hover:text-gray-700 hover:border-gray-700 z-10"
+            class="mt-4 border-gray-200 rounded-lg bg-zinc-700 text-gray-200 py-1 px-2.5 w-fit transition-all duration-300 ease-linear hover:scale-110 cursor-pointer z-10"
             target="_blank"
             rel="noopener noreferrer"
           >
