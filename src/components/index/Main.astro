@@ -5,7 +5,10 @@ interface Props {
 const { title } = Astro.props
 ---
 
-<main class="grow sm:px-2" transition:name="projects-index-transition">
+<main
+  class="grow sm:px-2 w-full max-w-screen-md mx-auto"
+  transition:name="projects-index-transition"
+>
   <h2 class="text-3xl font-extrabold mb-3 text-center">
     {title}
   </h2>
