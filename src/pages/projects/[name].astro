@@ -1,6 +1,7 @@
 ---
 import Layout from '@/layouts/Layout.astro'
 import Header from '@/components/index/Header.astro'
+import ProjectsNav from '@/components/index/projectDetail/ProjectsNav.astro'
 import Main from '@/components/index/Main.astro'
 import Footer from '@/components/index/Footer.astro'
 import { getCollection, render } from 'astro:content'
@@ -28,18 +29,10 @@ const BASE_URL = import.meta.env.BASE_URL
 
 <Layout title={name}>
   <Header isHomePage={false} />
-  <nav class="mb-3">
-    <a
-      href={`${BASE_URL}projects/${prevPath}`}
-      class="max-w-16 border border-gray-200 rounded-lg bg-gray-700 text-gray-200 py-1 px-2.5 w-fit transition-all duration-300 ease-linear hover:cursor-pointer hover:bg-gray-200 hover:text-gray-700 hover:border-gray-700"
-      >PREVIOUS PROJECT</a
-    >
-    <a
-      href={`${BASE_URL}projects/${nextPath}`}
-      class="max-w-16 border border-gray-200 rounded-lg bg-gray-700 text-gray-200 py-1 px-2.5 w-fit transition-all duration-300 ease-linear hover:cursor-pointer hover:bg-gray-200 hover:text-gray-700 hover:border-gray-700"
-      >NEXT PROJECT</a
-    >
-  </nav>
+  <ProjectsNav
+    nextHref={`${BASE_URL}projects/${prevPath}`}
+    prevHref={`${BASE_URL}projects/${nextPath}`}
+  />
   <Main title={name}>
     <img src={`${BASE_URL}${image}`} alt={name} class="max-w-64 aspect-auto" />
     <div

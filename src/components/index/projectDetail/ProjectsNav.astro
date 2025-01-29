@@ -1,0 +1,21 @@
+---
+interface Props {
+  prevHref: string
+  nextHref: string
+}
+
+const { prevHref, nextHref } = Astro.props
+---
+
+<nav class="mb-3">
+  <a
+    href={prevHref}
+    class="max-w-16 border border-gray-200 rounded-lg bg-gray-700 text-gray-200 py-1 px-2.5 w-fit transition-all duration-300 ease-linear hover:cursor-pointer hover:bg-gray-200 hover:text-gray-700 hover:border-gray-700"
+    >PREVIOUS PROJECT</a
+  >
+  <a
+    href={nextHref}
+    class="max-w-16 border border-gray-200 rounded-lg bg-gray-700 text-gray-200 py-1 px-2.5 w-fit transition-all duration-300 ease-linear hover:cursor-pointer hover:bg-gray-200 hover:text-gray-700 hover:border-gray-700"
+    >NEXT PROJECT</a
+  >
+</nav>
