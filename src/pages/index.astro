@@ -7,6 +7,7 @@ import BentoProjects from '@/components/index/BentoProjects.astro'
 import Footer from '@/components/index/Footer.astro'
 
 import { basics } from '@cv'
+import About from '@/components/index/About.astro'
 
 const { name, label } = basics
 ---
@@ -14,6 +15,7 @@ const { name, label } = basics
 <Layout title={`Portafolio de ${name} - ${label}`}>
   <Header isHomePage={true} />
   <Main title="PROYECTOS">
+    <About />
     <BentoProjects />
   </Main>
 </Layout>
