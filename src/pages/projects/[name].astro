@@ -30,13 +30,13 @@ const BASE_URL = import.meta.env.BASE_URL
 <Layout title={name}>
   <Header isHomePage={false} />
   <ProjectsNav
-    nextHref={`${BASE_URL}projects/${prevPath}`}
-    prevHref={`${BASE_URL}projects/${nextPath}`}
+    nextHref={`${BASE_URL}projects/${nextPath}`}
+    prevHref={`${BASE_URL}projects/${prevPath}`}
   />
   <Main title={name}>
     <img src={`${BASE_URL}${image}`} alt={name} class="max-w-64 aspect-auto" />
     <div
-      class="prose prose-ol:list-none prose-li:p-0 prose-li:m-0 prose-ol:p-0 prose-ol:m-0 prose-code:bg-zinc-800 prose-code:text-zinc-200 prose-code:rounded-[4px] prose-code:p-0.5"
+      class="prose prose-invert prose-ol:list-none prose-li:p-0 prose-li:m-0 prose-ol:p-0 prose-ol:m-0 prose-code:bg-zinc-800 prose-code:text-zinc-200 prose-code:rounded-[4px] prose-code:p-0.5"
     >
       <Content />
     </div>
