@@ -27,6 +27,10 @@ export default {
       backgroundImage: {
         'pattern': 'url("/CODESTHENOS-PORTFOLIO/pattern.svg")'
       },
+      colors: {
+        'primary': '#000000',
+        'secondary': '#ffffff'
+      },
       typography: {
         DEFAULT: {
           css: {
