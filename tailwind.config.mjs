@@ -24,6 +24,9 @@ export default {
   ],
 	theme: {
 		extend: {
+      backgroundImage: {
+        'pattern': 'url("/CODESTHENOS-PORTFOLIO/pattern.svg")'
+      },
       typography: {
         DEFAULT: {
           css: {
