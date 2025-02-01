@@ -25,7 +25,8 @@ export default {
 	theme: {
 		extend: {
       backgroundImage: {
-        'pattern': 'url("/CODESTHENOS-PORTFOLIO/background-4k.jpg")'
+        'pattern': 'url("/CODESTHENOS-PORTFOLIO/background-4k.jpg")',
+        'pattern-mobile': 'url("/CODESTHENOS-PORTFOLIO/background-mobile.jpg")'
       },
       colors: {
         'primary': '#000000',
